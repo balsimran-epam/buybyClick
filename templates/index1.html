@@ -99,7 +99,7 @@
                 </div>
                 <div class="search">
                     <input type="text" ng-model="searchItem" value="searchItem" >
-                    <input type="submit" ng-click="search(searchItem)" value="SEARCH"> </div>
+                    <input type="submit" ng-click="search(searchItem)" value="SEARCH" ng-disabled="!searchItem"> </div>
                 <div class="clearfix"> </div>
             </div>
             <div class="header-bottom-right">
@@ -154,7 +154,7 @@
             </a>
         </div>
         <div class="products">
-            <h5 class="latest-product">TRENDING NOW </h5> <a class="view-all" href="#/allProductLatest/clothing">VIEW HOT OFFERS<span> </span></a> </div>
+            <h5 class="latest-product">CLOTHING | <small>TRENDING NOW</small> </h5> <a class="view-all" href="#/allProductLatest/clothing">VIEW HOT OFFERS<span> </span></a> </div>
         <div class="product-left">
             <div class="col-md-4 chain-grid grid-top-chain" ng-repeat="product in products | filter:product.category='clothing' |  orderBy: '-_id'  | limitTo:3">
                 <a href="#/products/{{product._id}}"><img class="img-responsive chain" ng-src="{{product.img}}" height="270px" width="180px" /></a> <span class="star"> </span>
@@ -172,7 +172,11 @@
 									        <label for="rating-input-1-2" class="rating-star"> </label>
 									        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
 									        <label for="rating-input-1-1" class="rating-star"> </label>
-							    	   </span> </div>--> <a class="now-get size" ng-click="buyNow(product.original_price)">BUY NOW</a>
+							    	   </span> </div>--> 
+                        
+                         <center><a href="single.html">INR {{product.original_price}}</a></center>
+                        
+                        <a class="now-get size" ng-click="buyNow(product.original_price)">BUY NOW</a>
                         <div class="clearfix"> </div>
                     </div>
                 </div>
@@ -180,7 +184,7 @@
             <div class="clearfix"> </div>
         </div>
         <div class="products">
-            <h5 class="latest-product">TRENIDNG NOW</h5> <a class="view-all" href="#/allProductLatest/books">VIEW HOT OFFERS<span> </span></a> </div>
+            <h5 class="latest-product">BOOKS | <small>TRENDING NOW</small></h5> <a class="view-all" href="#/allProductLatest/books">VIEW HOT OFFERS<span> </span></a> </div>
         <div class="product-left">
             <div class="col-md-4 chain-grid grid-top-chain" ng-repeat="product in products | filter:product.category='books' | orderBy: '-_id' | limitTo:3">
                 <a href="#/products/{{product._id}}"><img class="img-responsive chain" ng-src="{{product.img}}" height="270px" width="180px"><img></a> <span class="star"> </span>
@@ -198,7 +202,12 @@
 									        <label for="rating-input-1-2" class="rating-star"> </label>
 									        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
 									        <label for="rating-input-1-1" class="rating-star"> </label>
-							    	   </span> </div>--> <a class="now-get size" ng-click="buyNow(product.original_price)">BUY NOW</a><br>
+							    	   </span> </div>--> 
+                        
+                        
+                         <center><a href="single.html">INR {{product.original_price}}</a></center>
+                        
+                        <a class="now-get size" ng-click="buyNow(product.original_price)">BUY NOW</a><br>
                         <div class="clearfix"> </div>
                     </div>
                 </div>
@@ -206,7 +215,7 @@
         </div>
         <div class="clearfix"> </div>
         <div class="products">
-            <h5 class="latest-product">TRENDING NOW</h5> <a class="view-all" href="#/allProductLatest/electronics">VIEW HOT OFFERS<span> </span></a> </div>
+            <h5 class="latest-product">ELECTRONICS | <small>TRENDING NOW</small></h5> <a class="view-all" href="#/allProductLatest/electronics">VIEW HOT OFFERS<span> </span></a> </div>
         <div class="product-left">
             <div class="col-md-4 chain-grid grid-top-chain" ng-repeat="product in products | filter: product.category='electronics'| orderBy: '-_id'  | limitTo:3">
                 <a ng-href="#/products/{{product._id}}"><img class="img-responsive chain" ng-src="{{product.img}}" height="270px" width="180px"><img></a> <span class="star"> </span>
@@ -224,7 +233,11 @@
 									        <label for="rating-input-1-2" class="rating-star"> </label>
 									        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
 									        <label for="rating-input-1-1" class="rating-star"> </label>
-							    	   </span> </div>--> <a class="now-get size" ng-click="buyNow(product.original_price)">BUY NOW</a>
+
+							    	   </span> </div>--> 
+                        
+                        <center><a href="single.html">INR {{product.original_price}}</a></center>
+                        <a class="now-get size" ng-click="buyNow(product.original_price)">BUY NOW</a>
                         <div class="clearfix"> </div>
                     </div>
                 </div>
@@ -346,9 +359,10 @@
 				</div>-->
             <div class="latter-right">
                 <p>FOLLOW US</p>
+
                 <ul class="face-in-to">
-                    <li><a href="#"><span> </span></a></li>
-                    <li><a href="#"><span class="facebook-in"> </span></a></li>
+                    <li><a href="https://twitter.com" target="_blank"><span> </span></a></li>
+                    <li><a href="https://www.facebook.com" target="_blank"><span class="facebook-in"> </span></a></li>
                     <div class="clearfix"> </div>
                 </ul>
                 <div class="clearfix"> </div>

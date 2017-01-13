@@ -45,7 +45,7 @@
                 </div>
                 <div class="search">
                     <input type="text" ng-model="searchItem" value="searchItem" >
-                    <input type="submit" ng-click="search(searchItem)" value="SEARCH"> </div>
+                    <input type="submit" ng-click="search(searchItem)" value="SEARCH" ng-disabled="!searchItem"> </div>
                 <div class="clearfix"> </div>
             </div>
             <div class="header-bottom-right">
@@ -63,7 +63,12 @@
 </div>
 
 <div class="container">
-    <div class="shoes-grid">
+    <div class="shoes-grid" ng-hide="total">
+        <div class="grid-product">
+           <h1> NO ITEMS FOUND</h1> 
+        </div>
+    </div>
+    <div class="shoes-grid" ng-show="total">
         <div class="grid-product">
    <div class=" product-grid col-xs-4" ng-repeat="product in products">
 			<div class="content_box">

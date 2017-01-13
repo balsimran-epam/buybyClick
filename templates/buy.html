@@ -161,9 +161,7 @@ $(document).ready(function(){
                 <div class="logo">
                     <a href="#/"><img src="images/logo.png" alt=" " /></a>
                 </div>
-                <div class="search">
-                    <input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
-                    <input type="submit" value="SEARCH"> </div>
+              
                 <div class="clearfix"> </div>
             </div>
             <div class="header-bottom-right">
@@ -239,8 +237,13 @@ $(document).ready(function(){
                     </div>
                 <br />
           PHONE<br />
+                
+                
+                
+                
+                
 				<span style="font-size:10px"></span>
-                <input type="text" ng-pattern="/^[0-9]{1,10}$/" style="width:300px;"
+                <input type="text" ng-pattern=" /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" style="width:300px;"
                     minlength="10" maxlength="10"   name="phone" ng-model="phone" required>
                 <div ng-messages="myform.phone.$error">
                         <div ng-message="required" class="help-block"
@@ -307,10 +310,11 @@ $(document).ready(function(){
           </form>
         
   <div class="sub-cate">
-        <div class=" top-nav rsidebar span_1_of_left">
+       	 <div class=" top-nav rsidebar span_1_of_left">
             <h3 class="cate">CATEGORIES</h3>
             <ul class="menu">
-                <li class="item1" data-toggle="collapse" data-target="#electronics"> Electronics<span class="caret"></span>
+                <li class="item1" data-toggle="collapse" data-target="#electronics"> Electronics
+                    <span class="glyphicon glyphicon-phone"></span><span class="caret"></span>
                     <ul class="cute collapse" id="electronics">
                         <li class="subitem1"><a href="#/category/electronics/subcategory/mobile">Mobile </a></li>
                         <li class="subitem1"><a href="#/category/electronics/subcategory/laptop">Laptop</a></li>
@@ -319,7 +323,8 @@ $(document).ready(function(){
                 </li>
             </ul>
             <ul class="menu">
-                <li class="item1" data-toggle="collapse" data-target="#clothing"> Clothing <span class="caret"></span>
+                <li class="item1" data-toggle="collapse" data-target="#clothing"> Clothing 
+               <span class="glyphicon glyphicon-user"></span><span class="caret"></span>             
                     <ul class="cute collapse" id="clothing">
                         <li class="subitem1"><a href="#/category/clothing/subcategory/men">Men</a></li>
                         <li class="subitem1"><a href="#/category/clothing/subcategory/women">Women </a></li>
@@ -328,7 +333,8 @@ $(document).ready(function(){
                 </li>
             </ul>
             <ul class="menu">
-                <li class="item1" data-toggle="collapse" data-target="#books">Books<span class="caret"></span>
+                <li class="item1" data-toggle="collapse" data-target="#books">Books
+                    <span class="glyphicon glyphicon-bookmark"></span><span class="caret"></span>
                     <ul class="cute collapse" id="books">
                         <li class="subitem1"><a href="#/category/books/subcategory/fiction">Fiction </a></li>
                         <li class="subitem1"><a href="#/category/books/subcategory/biography">Biography </a></li>
@@ -337,7 +343,8 @@ $(document).ready(function(){
                 </li>
             </ul>
              <ul class="menu">
-                <li class="item1" data-toggle="collapse" data-target="#sports">Sports<span class="caret"></span>
+                <li class="item1" data-toggle="collapse" data-target="#sports">Sports
+                     <img  ng-src="./images/sports/icon.png"><span class="caret"></span>
                     <ul class="cute collapse" id="sports">
                         <li class="subitem1"><a href="#/category/sports/subcategory/cricket">Cricket </a></li>
                         <li class="subitem1"><a href="#/category/sports/subcategory/badminton">Badminton </a></li>
@@ -346,7 +353,8 @@ $(document).ready(function(){
                 </li>
             </ul>
              <ul class="menu">
-                <li class="item1" data-toggle="collapse" data-target="#appliances">Appliances<span class="caret"></span>
+                <li class="item1" data-toggle="collapse" data-target="#appliances">Appliances
+                    <span class="glyphicon glyphicon-blackboard"></span><span class="caret"></span>
                     <ul class="cute collapse" id="appliances">
                         <li class="subitem1"><a href="#/category/appliances/subcategory/small">Small Home Appliances </a></li>
                         <li class="subitem1"><a href="#/category/appliances/subcategory/large">Large Appliances </a></li>
@@ -354,7 +362,8 @@ $(document).ready(function(){
                 </li>
             </ul>
             <ul class="menu">
-                <li class="item1" data-toggle="collapse" data-target="#home">  Home & Furniture<span class="caret"></span>
+                <li class="item1" data-toggle="collapse" data-target="#home">  Home & Furniture
+                    <span class="glyphicon glyphicon-lamp"></span><span class="caret"></span>
                     <ul class="cute collapse" id="home">
                         <li class="subitem1"><a href="#/category/home/subcategory/furniture">Furniture </a></li>
                         <li class="subitem1"><a href="#/category/home/subcategory/kitchen">Kitchen </a></li>

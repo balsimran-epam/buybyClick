@@ -277,7 +277,7 @@
                  $location.path('/buy');
              };
            $scope.search = function(searchName){
-                console.log("hello")
+               
              localStorageService.set('search',searchName);
                 var search = localStorageService.get('search');
                  $location.path('/search');
@@ -350,18 +350,30 @@
                 return productList.length;
             }
             
+            
+             $scope.search = function(searchName){
+              
+             localStorageService.set('search',searchName);
+                var search = localStorageService.get('search');
+                 $location.path('/search');
+              
+            };
+           
+            //increase and decreasing a quantity in the cart
+            $scope.cartItemCount = function(product, incdecby) {  
+                product.itemquant += incdecby;
+            }
+            
             $scope.continue = function(){
                 $location.path('/');
 };
           //cart products sum total
          $scope.getTotal = function(){
-             console.log("kk");
-     $scope.total = 0;
-             console.log($scope.productList);
+            $scope.total = 0;
              angular.forEach($scope.productList, function(val, key) {
-                 console.log("original price : "+val.original_price);
-                 var tempPrice = val.original_price;
-                 console.log("temp var : "+tempPrice);
+                
+                   var tempPrice = val.itemquant * val.original_price;
+                
                  $scope.total += tempPrice;
              });
              
@@ -429,21 +441,43 @@
       
       
       .controller('SearchDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location' ,function ($scope, Products,$routeParams, localStorageService, $location) {
-          console.log("in search ctrlk")
+         
           var searchObj = localStorageService.get('search');
-          console.log("in search ctrlk"+searchObj)
-$scope.products = Products.query({title : searchObj });
-          console.log($scope.products);
+          
+$scope.products = Products.query({title : searchObj },function(){
+    $scope.getTotal();
+    console.log($scope.total);
+});
         
+          //cart products sum total
+          $scope.getTotal = function(){
+            $scope.total = 0;
+             angular.forEach($scope.products, function(val, key) {
+                 var tempPrice = val.original_price;
+                 $scope.total += tempPrice;
+              
+             });
+              
+              
+                 
+          
           $scope.search = function(searchName){
-                console.log("hello")
+                
              localStorageService.set('search',searchName);
                 var search = localStorageService.get('search');
-               $scope.products = Products.query({title : search });
-              console.log($scope.products);
-         
+               $scope.products = Products.query({title : search },function(){
+                  $scope.getTotal();
+                 console.log($scope.total); 
+               });
+              
             };
           
+           
+         
+            
+         };
+             
+             
           $scope.addToCart = function(myProduct){
                   console.log("Add to cart");
                 var product = myProduct;
@@ -485,7 +519,29 @@ $scope.products = Products.query({title : searchObj });
                  $location.path('/');
             };
         
+          
+          
+          $scope.removeCart=function()
+          {
+              console.log("in service")
+              
+              localstorage.removeItem("productList")
+          }
         }])
+      
+      
+      
+       .controller('CatalogueController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
+                
+                $scope.products = []; 
+                $scope.products_insert= function(){
+                    alert(JSON.stringify($scope.products));
+                    Products.save($scope.products,function(val, key){
+                        
+                        //do something here
+                    });   
+                };
+        }])  
       
       
     
@@ -531,6 +587,9 @@ $scope.products = Products.query({title : searchObj });
            }).when('/cardPay', {
               templateUrl: '/cardPay.html',
               controller: 'CardPayDetailCtrl'
+           }).when('/catalogue', {
+              templateUrl: '/catalogue.html',
+              controller: 'CatalogueController'
            });
         }]);  
     </script>

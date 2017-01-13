@@ -10,7 +10,7 @@ var ProductSchema = new mongoose.Schema({
     original_price : Number,
     discounted_price : Number,
     latest: String,
-  
+      itemquant: Number,
     Quantity: Number
 });
 
