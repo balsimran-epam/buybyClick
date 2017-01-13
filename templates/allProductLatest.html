@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Product :: w3layouts</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--fonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!--//fonts-->
+<script src="js/jquery.min.js"></script>
+
+<style>
+    body {
+        background: #fff;
+        font-family: 'Open Sans', sans-serif;
+    }
+    
+    li.item1 {
+        line-height: 3.2;
+        background-color: #fff;
+        color: black;
+        padding-left: 12px;
+    }
+</style>
+<!--script-->
+</head>
+<body> 
+	<!--header-->
+	<div class="header">
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-left">
+                <ul class="support">
+                    <li>
+                        <a href="#">
+                            <label> </label>
+                        </a>
+                    </li>
+                    <li><a href="#">24x7 live<span class="live"> support</span></a></li>
+                </ul>
+                <ul class="support">
+                    <li class="van">
+                        <a href="#">
+                            <label> </label>
+                        </a>
+                    </li>
+                    <li><a href="#">Free shipping <span class="live">on order over 500</span></a></li>
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="bottom-header">
+        <div class="container">
+            <div class="header-bottom-left">
+                <div class="logo">
+                    <a href="/"><img src="images/logo.png" alt=" " /></a>
+                </div>
+                <div class="search">
+                    <input type="text" ng-model="searchItem" value="searchItem" >
+                    <input type="submit" ng-click="search(searchItem)" value="SEARCH"> </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="header-bottom-right">
+                <div class="account"><a href="login.html"><span> </span>YOUR ACCOUNT</a></div>
+                <ul class="login">
+                    <li><a href="login.html"><span> </span>LOGIN</a></li> |
+                    <li><a href="register.html">SIGNUP</a></li>
+                </ul>
+<div class="cart"><a href="#/cart"><span> </span>CART ({{(cartQuantityTotal())}})</a></div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+    
+	<!---->
+	<!-- start content -->
+	<div class="container">	
+	<div class="women-product">
+		<div class=" w_content">
+				<div class="women">
+               
+				<a href="#"><h4>No of Items - <span>{{count/10}}</span> </h4></a>
+				<ul class="w_nav">
+					<li>Sort : </li>
+                     
+
+			     	<!--<li><a class="active" href="#">popular</a></li> |-->
+			     	<li class ="changeToLink" ng-click="sorting('-_id')">new </li> |
+			     <!--	<li class ="changeToLink"><a href="sorting('discounted_price')">discount</a></li> |-->
+			     	<li class ="changeToLink" ng-click="sorting('original_price')">price: Low High </li> |
+                    	<li class ="changeToLink" ng-click="sorting('-original_price')">price: High Low </li>
+                   
+			     <div class="clearfix"> </div>	
+			     </ul>
+			     <div class="clearfix"> </div>	
+			</div>
+		</div>
+		<!-- grids_of_4 -->
+       
+		<div class="grid-product">
+		  <div class=" product-grid col-xs-4" ng-repeat="product in products| orderBy: sort | filter: filterTags">
+			<div class="content_box">
+                <a href="#/products/{{product._id}}">
+			   	<div class="left-grid-view grid-view-left">
+                    <a href="#/products/{{product._id}}"><img ng-src="{{product.img}}" height="250px" width="150px" class="img-responsive watch-right" alt=""/></a>
+				   	   	<div class="mask">
+	                        <div class="info">QuickView</div>
+			            </div>
+                    </div>
+				   	  </a>
+				</div>
+				    <h4><a href="#/products/{{product._id}}">{{product.title}}</a></h4>
+				     <!--<p>{{product.description}}</p>-->
+				     <p>Rs. {{product.original_price}}</p>
+              <!--<a class="now-get get-cart" ng-click="buyNow(product.original_price)">BUY NOW</a>-->
+            <a class="now-get" ng-click="addToCart(product)">Add To Cart</a>
+             
+              <div ng-if="$index % 3 == 2">
+          <br>
+                  <br>
+              </div>
+              </div> 
+			 </div>
+            
+            
+        
+			<div class="clearfix"> </div>
+	</div>
+	<div class="sub-cate">
+			 <div class=" top-nav rsidebar span_1_of_left">
+            <h3 class="cate">CATEGORIES</h3>
+            <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#electronics"> Electronics
+                    <span class="glyphicon glyphicon-phone"></span><span class="caret"></span>
+                    <ul class="cute collapse" id="electronics">
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/mobile">Mobile </a></li>
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/laptop">Laptop</a></li>
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Printer </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#clothing"> Clothing 
+               <span class="glyphicon glyphicon-user"></span><span class="caret"></span>             
+                    <ul class="cute collapse" id="clothing">
+                        <li class="subitem1"><a href="#/category/clothing/subcategory/men">Men</a></li>
+                        <li class="subitem1"><a href="#/category/clothing/subcategory/women">Women </a></li>
+                        <li class="subitem1"><a href="#/category/clothing/subcategory/kids">Kids </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#books">Books
+                    <span class="glyphicon glyphicon-bookmark"></span><span class="caret"></span>
+                    <ul class="cute collapse" id="books">
+                        <li class="subitem1"><a href="#/category/books/subcategory/fiction">Fiction </a></li>
+                        <li class="subitem1"><a href="#/category/books/subcategory/biography">Biography </a></li>
+                        <li class="subitem1"><a href="#/category/books/subcategory/horror"> Horror </a></li>
+                    </ul>
+                </li>
+            </ul>
+             <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#sports">Sports
+                     <img  ng-src="./images/sports/icon.png"><span class="caret"></span>
+                    <ul class="cute collapse" id="sports">
+                        <li class="subitem1"><a href="#/category/sports/subcategory/cricket">Cricket </a></li>
+                        <li class="subitem1"><a href="#/category/sports/subcategory/badminton">Badminton </a></li>
+                        <li class="subitem1"><a href="#/category/sports/subcategory/fitness">Fitness </a></li>
+                    </ul>
+                </li>
+            </ul>
+             <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#appliances">Appliances
+                    <span class="glyphicon glyphicon-blackboard"></span><span class="caret"></span>
+                    <ul class="cute collapse" id="appliances">
+                        <li class="subitem1"><a href="#/category/appliances/subcategory/small">Small Home Appliances </a></li>
+                        <li class="subitem1"><a href="#/category/appliances/subcategory/large">Large Appliances </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#home">  Home & Furniture
+                    <span class="glyphicon glyphicon-lamp"></span><span class="caret"></span>
+                    <ul class="cute collapse" id="home">
+                        <li class="subitem1"><a href="#/category/home/subcategory/furniture">Furniture </a></li>
+                        <li class="subitem1"><a href="#/category/home/subcategory/kitchen">Kitchen </a></li>
+                    </ul>
+                </li>
+            </ul>
+          
+            
+            
+        </div>
+				<!--initiate accordion-->
+		<script type="text/javascript">
+			$(function() {
+			    var menu_ul = $('.menu > li > ul'),
+			           menu_a  = $('.menu > li > a');
+			    menu_ul.hide();
+			    menu_a.click(function(e) {
+			        e.preventDefault();
+			        if(!$(this).hasClass('active')) {
+			            menu_a.removeClass('active');
+			            menu_ul.filter(':visible').slideUp('normal');
+			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+			        } else {
+			            $(this).removeClass('active');
+			            $(this).next().stop(true,true).slideUp('normal');
+			        }
+			    });
+			
+			});
+		</script>
+					
+	   		     	<!-- <a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a> -->	
+			</div>
+	<div class="clearfix"> </div>
+</div>
+	<!---->
+	<div class="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="latter-right">
+					<p>FOLLOW US</p>
+					<ul class="face-in-to">
+						<li><a href="#"><span> </span></a></li>
+						<li><a href="#"><span class="facebook-in"> </span></a></li>
+						<div class="clearfix"> </div>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container">
+            <div class="footer-bottom-cate">
+                <h6>CATEGORIES</h6>
+                <ul>
+                    <li><a href="#">Electronics</a></li>
+                    <li><a href="#">Clothing</a></li>
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Home & Furniture</a></li>
+                    <li><a href="#">Appliances</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom-cate bottom-grid-cat">
+                <h6>FEATURED PRODUCTS</h6>
+                <ul>
+                    <li><a href="#">Zara Men Shirt</a></li>
+                    <li><a href="#">Apple Iphone 7 plus</a></li>
+                    <li><a href="#">Induction Cooker</a></li>
+                    <li><a href="#">One Indian Girl</a></li>
+                    <li><a href="#">HP Laptop</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom-cate">
+                <h6>TOP BRANDS</h6>
+                <ul>
+                    <li><a href="#">Zara</a></li>
+                    <li><a href="#">HP</a></li>
+                    <li><a href="#">Apple</a></li>
+                    <li><a href="#">SS-Cricket</a></li>
+                    <li><a href="#">SleepWell</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom-cate cate-bottom">
+                <h6>OUR ADDERSS</h6>
+                <ul>
+                    <li>3rd and 4th Floor</li>
+                    <li>North wing, JVP Building</li>
+                    <li> Plot No. 5</li>
+                    <li>  Software Units Layout</li>
+                    <li> Madhapur, Hyderabad, Telangana 500081 </li>
+                    <li class="phone">PH : 040 3911 1700</li>
+                    <li class="temp">
+                       <!-- <p class="footer-class">Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>-->
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+		</div>
+	</div>
+    
+</body>
+</html>
+
+
+

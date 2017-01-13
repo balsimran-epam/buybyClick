@@ -1,0 +1,453 @@
+<style>
+    body {
+        background: #fff;
+        font-family: 'Open Sans', sans-serif;
+    }
+    
+    li.item1 {
+        line-height: 3.2;
+        background-color: #fff;
+        color: black;
+        padding-left: 12px;
+    }
+</style>
+<style>
+.buttonCard {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f97e76;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.buttonCard span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttonCard span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttonCard:hover span {
+  padding-right: 25px;
+}
+
+.buttonCard:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+<style>
+/* The Modal (background) */
+    .mtitle{
+    margin: 0;
+    line-height: 1.42857143;
+    font-size: xx-large;  
+    }
+    .mbody{
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-size: 15px;
+    }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+    $("#myBtn3").click(function(){
+        $("#myModal").modal({backdrop: "static"});
+    });
+});
+</script>
+
+<div class="header">
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-left">
+                <ul class="support">
+                    <li>
+                        <a href="#">
+                            <label> </label>
+                        </a>
+                    </li>
+                    <li><a href="#">24x7 live<span class="live"> support</span></a></li>
+                </ul>
+                <ul class="support">
+                    <li class="van">
+                        <a href="#">
+                            <label> </label>
+                        </a>
+                    </li>
+                    <li><a href="#">Free shipping <span class="live">on order over 500</span></a></li>
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+           <!-- <div class="top-header-right">
+                <div class="down-top">
+                    <select class="in-drop">
+                        <option value="English" class="in-of">English</option>
+                        <option value="Japanese" class="in-of">Japanese</option>
+                        <option value="French" class="in-of">French</option>
+                        <option value="German" class="in-of">German</option>
+                    </select>
+                </div>
+                <div class="down-top top-down">
+                    <select class="in-drop">
+                        <option value="Dollar" class="in-of">Dollar</option>
+                        <option value="Yen" class="in-of">Yen</option>
+                        <option value="Euro" class="in-of">Euro</option>
+                    </select>
+                </div>
+                
+                <div class="clearfix"> </div>
+            </div>-->
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="bottom-header">
+        <div class="container">
+            <div class="header-bottom-left">
+                <div class="logo">
+                    <a href="#/"><img src="images/logo.png" alt=" " /></a>
+                </div>
+                <div class="search">
+                    <input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+                    <input type="submit" value="SEARCH"> </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="header-bottom-right">
+                <div class="account"><a href="login.html"><span> </span>YOUR ACCOUNT</a></div>
+                <ul class="login">
+                    <li><a href="login.html"><span> </span>LOGIN</a></li> |
+                    <li><a href="register.html">SIGNUP</a></li>
+                </ul>
+             <div class="cart"><a href="#/cart"><span> </span>CART {{cartQuantityTotal()}} items</a></div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+     <form name="myform">
+    <div class="shoes-grid">
+        <div id="content" class="float_r">
+            <br><br><br>
+            <h5><strong>BILLING INFORMATION</strong></h5>
+          
+            <div class="content_half float_l checkout">
+                 
+				Full Name:  
+                  <input type="text" ng-pattern="/^[a-zA-Z\s]*$/" style="width:300px;" name="fname" ng-model="fname" required/>
+                <div ng-messages="myform.fname.$error">
+				<div ng-message="required" class="help-block errorcolor"
+					ng-show="myform.fname.$dirty && myform.fname.$error.required">
+				</div>
+				<div ng-message="pattern" class="help-block errorcolor"
+					ng-show="myform.fname.$error.pattern">Only Characters
+					allowed</div>
+			</div>
+                <br>      
+              Address:
+				<input type="text"  style="width:300px;"  required/>
+                <br />
+                <br />
+              City:
+                <input type="text" ng-pattern="/^[a-zA-Z\s]*$/" name="city" ng-model="city"  style="width:300px;"  required/>
+                <div ng-messages="myform.city.$error">
+				<div ng-message="required" class="help-block errorcolor"
+					ng-show="myform.city.$dirty && myform.city.$error.required">
+				</div>
+				<div ng-message="pattern" class="help-block errorcolor"
+					ng-show="myform.city.$error.pattern">Only Characters
+					allowed</div>
+			</div>
+                <br />
+                Country:
+                <input type="text" ng-pattern="/^[a-zA-Z\s]*$/" name="country" ng-model="country"  style="width:300px;"  required/>
+                    <div ng-messages="myform.country.$error">
+				<div ng-message="required" class="help-block errorcolor"
+					ng-show="myform.country.$dirty && myform.country.$error.required">
+				</div>
+				<div ng-message="pattern" class="help-block errorcolor"
+					ng-show="myform.country.$error.pattern">Only Characters
+					allowed</div>
+			</div>
+                <br>
+            <div class="content_half float_r checkout">
+            	E-MAIL
+				<input type="text" name="email" ng-model="email" style="width:300px;" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required/>
+                <div ng-messages="myform.email.$error">
+                        <div ng-message="required" class="help-block errorcolor"
+                            ng-show="myform.email.$dirty && myform.email.$error.required">Not a valid email id.
+                            </div>
+                        <div ng-message="pattern" class="help-block errorcolor"
+                            ng-show="myform.email.$error.pattern">username@domain.com
+                        </div>
+                    </div>
+                <br />
+          PHONE<br />
+				<span style="font-size:10px"></span>
+                <input type="text" ng-pattern="/^[0-9]{1,10}$/" style="width:300px;"
+                    minlength="10" maxlength="10"   name="phone" ng-model="phone" required>
+                <div ng-messages="myform.phone.$error">
+                        <div ng-message="required" class="help-block"
+                            ng-show="myform.phone.$dirty && myform.phone.$error.required">
+                            </div>
+                        <div ng-message="pattern" class="help-block errorcolor"
+                            ng-show="myform.phone.$error.pattern">Only Numerics
+                            allowed.</div>
+                    </div>
+            </div>
+                                    
+                     <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="mtitle">Order Status</h2>
+        </div>
+        <div class="modal-body">
+          <p class="mbody">Your Order has been Placed. Thank You {{fname}} for Shopping with us!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ng-click="close()" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+                
+                     </div>
+          
+            <div class="cleaner h50"></div>
+            <h2><strong>SHOPPING CART</strong></h2>
+            <h3><u>TOTAL AMOUNT:</u> <strong>{{t}}</strong></h3>
+			<!--<p><input type="checkbox" ng-disabled="myform.$invalid" />
+			I accept the <a href="#">terms of use</a> of this website.</p>-->
+            <table style="border:1px solid #CCCCCC;" width="100%">
+                <tr>
+                    <td height="80px"> <img src="/images/cod4.jpg" width="120px" height="50px" alt="paypal" /></td>
+                    <td width="400px;" style="padding: 0px 20px;">We accept Cash on Delivery. For more information Contact Us!
+                    </td>
+                    <td><button type="button"  ng-disabled="myform.$invalid" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1" data-backdrop="static"  >Cash on Delivery</button></td>
+                                
+
+                </tr>
+                <tr>
+                    <td  height="80px"><img src="/images/cd1.jpg" width="120px" height="50px" alt="paypal" />
+                    </td>
+                    <td  width="400px;" style="padding: 0px 20px;"> Use Credit Card / Debit Card as a payment option. MasterCard, Visa, Rupay all are accepted. </td>
+                    <td><!--<button id="myBtn" >Credit Card / Debit Card</button>-->
+                        
+                        <button type="button" class="btn btn-info btn-lg"  ng-disabled="myform.$invalid"><a href="#/cardPay">Credit / Debit Card&nbsp;<span class="  glyphicon glyphicon-credit-card" aria-hidden="true"></span></a></button>
+                      <!--  <div class="modal fade" id="myModal" role="dialog">-->
+                            
+              
+
+                    </td>
+                </tr>
+            </table>
+                
+        </div>
+         
+    </div>
+         
+          </form>
+        
+  <div class="sub-cate">
+        <div class=" top-nav rsidebar span_1_of_left">
+            <h3 class="cate">CATEGORIES</h3>
+            <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#electronics"> Electronics<span class="caret"></span>
+                    <ul class="cute collapse" id="electronics">
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/mobile">Mobile </a></li>
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/laptop">Laptop</a></li>
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Printer </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#clothing"> Clothing <span class="caret"></span>
+                    <ul class="cute collapse" id="clothing">
+                        <li class="subitem1"><a href="#/category/clothing/subcategory/men">Men</a></li>
+                        <li class="subitem1"><a href="#/category/clothing/subcategory/women">Women </a></li>
+                        <li class="subitem1"><a href="#/category/clothing/subcategory/kids">Kids </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#books">Books<span class="caret"></span>
+                    <ul class="cute collapse" id="books">
+                        <li class="subitem1"><a href="#/category/books/subcategory/fiction">Fiction </a></li>
+                        <li class="subitem1"><a href="#/category/books/subcategory/biography">Biography </a></li>
+                        <li class="subitem1"><a href="#/category/books/subcategory/horror"> Horror </a></li>
+                    </ul>
+                </li>
+            </ul>
+             <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#sports">Sports<span class="caret"></span>
+                    <ul class="cute collapse" id="sports">
+                        <li class="subitem1"><a href="#/category/sports/subcategory/cricket">Cricket </a></li>
+                        <li class="subitem1"><a href="#/category/sports/subcategory/badminton">Badminton </a></li>
+                        <li class="subitem1"><a href="#/category/sports/subcategory/fitness">Fitness </a></li>
+                    </ul>
+                </li>
+            </ul>
+             <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#appliances">Appliances<span class="caret"></span>
+                    <ul class="cute collapse" id="appliances">
+                        <li class="subitem1"><a href="#/category/appliances/subcategory/small">Small Home Appliances </a></li>
+                        <li class="subitem1"><a href="#/category/appliances/subcategory/large">Large Appliances </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="menu">
+                <li class="item1" data-toggle="collapse" data-target="#home">  Home & Furniture<span class="caret"></span>
+                    <ul class="cute collapse" id="home">
+                        <li class="subitem1"><a href="#/category/home/subcategory/furniture">Furniture </a></li>
+                        <li class="subitem1"><a href="#/category/home/subcategory/kitchen">Kitchen </a></li>
+                    </ul>
+                </li>
+            </ul>
+          
+            
+            
+        </div>
+        <!--initiate accordion-->
+        <script type="text/javascript">
+            $(function () {
+                var menu_ul = $('.menu > li > ul')
+                    , menu_a = $('.menu > li > a');
+                menu_ul.hide();
+                menu_a.click(function (e) {
+                    e.preventDefault();
+                    if (!$(this).hasClass('active')) {
+                        menu_a.removeClass('active');
+                        menu_ul.filter(':visible').slideUp('normal');
+                        $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                    }
+                    else {
+                        $(this).removeClass('active');
+                        $(this).next().stop(true, true).slideUp('normal');
+                    }
+                });
+            });
+        </script>
+        <div class=" chain-grid menu-chain">
+            <script type="text/ng-template" id="/products.html">
+                <li ng-repeat="product in products | filter:search ">
+                    <center> <img class="img-responsive chain" ng-src="{{product.img}}" height="270px" width="180px" /></center>
+                    <div class="grid-chain-bottom chain-watch"> <span class="actual dolor-left-grid">{{product.price}} </span> <span class="reducedfrom">{{product.price}} </span>
+                        <h6><a href="single.html">{{product.title}} </a></h6> </div>
+                </li>
+            </script>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-top">
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-cate">
+                <h6>CATEGORIES</h6>
+                <ul>
+                    <li><a href="#">Electronics</a></li>
+                    <li><a href="#">Clothing</a></li>
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Home & Furniture</a></li>
+                    <li><a href="#">Appliances</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom-cate bottom-grid-cat">
+                <h6>FEATURED PRODUCTS</h6>
+                <ul>
+                    <li><a href="#">Zara Men Shirt</a></li>
+                    <li><a href="#">Apple Iphone 7 plus</a></li>
+                    <li><a href="#">Induction Cooker</a></li>
+                    <li><a href="#">One Indian Girl</a></li>
+                    <li><a href="#">HP Laptop</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom-cate">
+                <h6>TOP BRANDS</h6>
+                <ul>
+                    <li><a href="#">Zara</a></li>
+                    <li><a href="#">HP</a></li>
+                    <li><a href="#">Apple</a></li>
+                    <li><a href="#">SS-Cricket</a></li>
+                    <li><a href="#">SleepWell</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom-cate cate-bottom">
+                <h6>OUR ADDERSS</h6>
+                <ul>
+                    <li>3rd and 4th Floor</li>
+                    <li>North wing, JVP Building</li>
+                    <li> Plot No. 5</li>
+                    <li>  Software Units Layout</li>
+                    <li> Madhapur, Hyderabad, Telangana 500081 </li>
+                    <li class="phone">PH : 040 3911 1700</li>
+                    <li class="temp">
+                       <!-- <p class="footer-class">Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>-->
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    </div>
+</div>
