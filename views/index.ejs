@@ -1,108 +1,113 @@
 <!DOCTYPE html>
 <html ng-app="app">
-  <head>
-   
-    
-      
+
+<head>
+
+
+
     <!-- Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.6.1/angular-messages.js"></script>
-      
-       
+
+
     <script src="/js/jquery-1.4.3.min.js"></script>
-     
-        <script src="/js/jquery.etalage.min.js"></script>
+
+    <script src="/js/jquery.etalage.min.js"></script>
     <script src="/js/jquery.flexisel.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery.nivo.slider.pack.js"></script>
-      <script src="/js/jquery.wmuSlider.js"></script>
+    <script src="/js/jquery.wmuSlider.js"></script>
     <script src="/js/slimbox2.js"></script>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.4.0/ui-bootstrap-tpls.min.js"></script>
 
-      
-     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.5.0/angular-local-storage.min.js"></script>
-            <script src="/js/sweetalert.min.js"></script>
-      
-      
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-     
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.5.0/angular-local-storage.min.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/css/etalage.css">
     <link rel="stylesheet" type="text/css" href="/css/form.css">
-        <link rel="stylesheet" type="text/css" href="/css/nivo-slider.css">
-       <link rel="stylesheet" type="text/css" href="/css/slimbox2.css">
+    <link rel="stylesheet" type="text/css" href="/css/nivo-slider.css">
+    <link rel="stylesheet" type="text/css" href="/css/slimbox2.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-<link rel="stylesheet" type="text/css" href="/css/bill.css">
-      
-<link rel="stylesheet" type="text/css" href="/css/sweetalert.min.css">
-            
-
-   
-  
+    <link rel="stylesheet" type="text/css" href="/css/bill.css">
+    <link rel="stylesheet" type="text/css" href="/css/sweetalert.min.css">
     <link rel="stylesheet" type="text/css" href="/css/templatemo_style.css">
-      
-      
+    
+    <!-- css files for cart html page -->
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="/css/price-range.css">
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+
+
     <script>
-      angular.module('app', ['ngRoute', 'ngResource', 'ngMessages', 'ui.bootstrap','LocalStorageModule'])
+        angular.module('app', ['ngRoute', 'ngResource', 'ngMessages', 'ui.bootstrap', 'LocalStorageModule'])
 
         //---------------
         // Services
         //---------------
 
-       /* .factory('Products', ['$resource', function($resource){
-          return $resource('/products/:id', null, {
-            'update': { method:'PUT' }
-          });
-        }])*/
-      
-      .factory('Products', ['$resource', function($resource){
-          return $resource('/products/:title', null, {
-            'update': { method:'PUT' }
-          });
+        /* .factory('Products', ['$resource', function($resource){
+           return $resource('/products/:id', null, {
+             'update': { method:'PUT' }
+           });
+         }])*/
+
+        .factory('Products', ['$resource', function($resource) {
+            return $resource('/products/:title', null, {
+                'update': {
+                    method: 'PUT'
+                }
+            });
         }])
 
         //---------------
         // Controllers
         //---------------
 
-        .controller('ProductController', ['$scope', 'Products','localStorageService','$location', function ($scope, Products,localStorageService,$location) {
-       
-          $scope.products = Products.query();
-               $scope.myInterval = 3000;
+        .controller('ProductController', ['$scope', 'Products', 'localStorageService', '$location', function($scope, Products, localStorageService, $location) {
+
+            $scope.products = Products.query();
+            $scope.myInterval = 3000;
             $scope.noWrapSlides = false;
-               $scope.buyNow = function(price){
-                 console.log(price);
-                 localStorageService.set('totalPrice',price);
-                   localStorageService.set('buydirect', false);
-                   var buydirect = localStorageService.get('buydirect');
-                   console.log("lssss"+buydirect)
-                 $location.path('/buy');
-                   
-                   
-             };
-            
-            $scope.search = function(searchName){
-             localStorageService.set('search',searchName);
-                var search = localStorageService.get('search');
-                 $location.path('/search');
-              
+            $scope.buyNow = function(price) {
+                console.log(price);
+                localStorageService.set('totalPrice', price);
+                localStorageService.set('buydirect', false);
+                var buydirect = localStorageService.get('buydirect');
+                console.log("lssss" + buydirect)
+                $location.path('/buy');
+
+
             };
-            
-            
-            
-             //quantity of products in cart
-            $scope.cartQuantityTotal = function(){
+
+            $scope.search = function(searchName) {
+                localStorageService.set('search', searchName);
+                var search = localStorageService.get('search');
+                $location.path('/search');
+
+            };
+
+
+
+            //quantity of products in cart
+            $scope.cartQuantityTotal = function() {
                 var productList = localStorageService.get('productList') || [];
                 return productList.length;
             }
 
-            
+
             /*$scope.addToCart = function(myProduct){
                 var product = myProduct;
               var productList = localStorageService.get('productList') || [];
@@ -115,201 +120,204 @@
                 alert('Product added to the Cart');
                 
             };*/
-            
-  $scope.slides = [
-    {
-      image: './images/8.jpg' 
-    },
-    {
-      image: './images/4.jpg'
-    },
-    {
-      image: './images/3.jpg'
-    },   
-   {
-      image:'./images/5.jpg'
-    } ,  
-      {
-      image:'./images/11.jpg',
-    },
-      {
-      image:'./images/2.jpg',
-    },
-      {
-      image:'./images/1.jpg',
-    }
-  ];
+
+            $scope.slides = [{
+                    image: 'http://img.stalkbuylove.com/media/wysiwyg/new_banners/Desktop_MainBanner1_Partywear_30122016_V1.jpg'
+                }, {
+                    image: 'http://img.stalkbuylove.com/media/wysiwyg/new_banners/Desktop_MainBanner1_BlackEdit_30122016_V1.jpg'
+                }, {
+                    image: 'https://assets.tatacliq.com/medias/sys_master/images/10287826698270.jpg'
+                }, {
+                    image: 'https://assets.tatacliq.com/medias/sys_master/images/10287826829342.jpg  '
+                }, {
+                    image: 'https://assets.tatacliq.com/medias/sys_master/images/10258535055390.jpg',
+                }, {
+                    image: 'http://g-ecx.images-amazon.com/images/G/31/img16/Newtiles/1_GWHERO_4500X900-Eoss-Csaual._UX1500_SX1500_.jpg ',
+                }, {
+                    image: 'http://g-ecx.images-amazon.com/images/G/31/img17/Home/Bunks/EOSS_GW_bunk-desktop._UX1500_SX1500_.jpg ',
+                },
+
+                {
+                    image: 'http://g-ecx.images-amazon.com/images/G/31/img16/Books/112016/tb/GW-copy-new._UX1500_SX1500_.jpg ',
+                }
+            ];
         }])
-      
-      
-    
 
- 
 
-      
-.controller('ProductDetailCtrl', ['$scope', '$routeParams', 'Products','localStorageService','$location', function ($scope, $routeParams, Products, localStorageService,$location) {
-     
-    console.log("ctrl")
-    $scope.products = Products.query();
-          /*$scope.product = Products.get({id: $routeParams.id });*/
-     $scope.id= $routeParams.id;
-    
-            $scope.search = function(searchName){
-             localStorageService.set('search',searchName);
+
+
+
+
+
+        .controller('ProductDetailCtrl', ['$scope', '$routeParams', 'Products', 'localStorageService', '$location', function($scope, $routeParams, Products, localStorageService, $location) {
+
+            console.log("ctrl")
+            $scope.products = Products.query();
+            /*$scope.product = Products.get({id: $routeParams.id });*/
+            $scope.id = $routeParams.id;
+
+            $scope.search = function(searchName) {
+                localStorageService.set('search', searchName);
                 var search = localStorageService.get('search');
-                 $location.path('/search');
-              
+                $location.path('/search');
+
             };
-    
-    //quantity of products in cart
-            $scope.cartQuantityTotal = function(){
+
+            //quantity of products in cart
+            $scope.cartQuantityTotal = function() {
                 var productList = localStorageService.get('productList') || [];
                 return productList.length;
             }
-    
-    
-    
-     $scope.buyNow = function(price){
-                 console.log(price);
-                 localStorageService.set('totalPrice',price);
-         localStorageService.set('buydirect', false);
-                   var buydirect = localStorageService.get('buydirect');
-                   console.log("lssss"+buydirect)
-                 $location.path('/buy');
-             };
-         $scope.filterIds = function (tag) {
-        //console.log(tag, $scope.catSort);
-        return tag._id == $scope.id;
-    };
 
-    
-   
-    
-    /*$scope.search = localStorageService.get('search');*/
-      $scope.addToCart = function(myProduct){              
-          console.log(myProduct);
-          var product = myProduct;
-           var productList = localStorageService.get('productList') || [];
-                $scope.exists = false;
-                angular.forEach(productList, function(val, key) {
-			if(angular.equals(product._id, val._id)){ $scope.exists = true }; 
-		});
-             
-                if($scope.exists == false && product.id != "") {
-                    productList.push(product); localStorageService.set('productList', productList); }
-          console.log("ppppppppppp"+productList)
-           if($scope.exists == false && product.id != "")
-                swal("Product Added to Cart!", "", "success")
-          
-          if($scope.exists != false ||  product.id == ""){
-               swal("Product is already added to Cart!")
-          }
-                
+
+
+            $scope.buyNow = function(price) {
+                console.log(price);
+                localStorageService.set('totalPrice', price);
+                localStorageService.set('buydirect', false);
+                var buydirect = localStorageService.get('buydirect');
+                console.log("lssss" + buydirect)
+                $location.path('/buy');
             };
-      /*if($scope.exists == false && product.id != "")
-        {
-            alert('Product is already added to the Cart');
-        }*/
-    
-        }])
-      
-      .controller('AllProductDetailCtrl', ['$scope', 'Products', '$routeParams','localStorageService' ,'$location', function ($scope, Products,$routeParams, localStorageService, $location) {
-          
-          $scope.search = function(searchName){
-             localStorageService.set('search',searchName);
-                var search = localStorageService.get('search');
-                 $location.path('/search');
-              
+            $scope.filterIds = function(tag) {
+                //console.log(tag, $scope.catSort);
+                return tag._id == $scope.id;
             };
-          
-          //quantity of products in cart
-            $scope.cartQuantityTotal = function(){
-                var productList = localStorageService.get('productList') || [];
-                return productList.length;
-            }
-            
-         $scope.sort = "category";
-            $scope.count=0;
-          $scope.products = Products.query();
-          $scope.category= $routeParams.category;
-         
-           $scope.filterTags = function (tag) {
-        //console.log(tag, $scope.catSort);
-                if(tag.category == $scope.category)
-                   {
-                       
-                       $scope.count++;
-                   }
-        return tag.category == $scope.category;
-               
-    };
-          
-          
-           $scope.sorting = function(sortOn){
-              $scope.sort = sortOn ;
-           };
-       
-          
-          $scope.addToCart = function(myProduct){
-            
+
+
+
+
+            /*$scope.search = localStorageService.get('search');*/
+            $scope.addToCart = function(myProduct) {
+                console.log(myProduct);
                 var product = myProduct;
-              var productList = localStorageService.get('productList') || [];
+                var productList = localStorageService.get('productList') || [];
                 $scope.exists = false;
                 angular.forEach(productList, function(val, key) {
-			if(angular.equals(product._id, val._id)){ $scope.exists = true }; 
-		});
-                if($scope.exists == false && product.id != "") {
-                    productList.push(product); localStorageService.set('productList', productList); }
-                if($scope.exists == false && product.id != "")
-                swal("Product Added to Cart!", "", "success")
-          
-          if($scope.exists != false ||  product.id == ""){
-               swal("Product is already added to Cart!")
-          }
-                
+                    if (angular.equals(product._id, val._id)) {
+                        $scope.exists = true
+                    };
+                });
+
+                if ($scope.exists == false && product.id != "") {
+                    productList.push(product);
+                    localStorageService.set('productList', productList);
+                }
+                console.log("ppppppppppp" + productList)
+                if ($scope.exists == false && product.id != "")
+                    swal("Product Added to Cart!", "", "success")
+
+                if ($scope.exists != false || product.id == "") {
+                    swal("Product is already added to Cart!")
+                }
+
             };
+            /*if($scope.exists == false && product.id != "")
+              {
+                  alert('Product is already added to the Cart');
+              }*/
+
         }])
-      
-      
-       .controller('SubcategoryCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location' ,function ($scope, Products,$routeParams, localStorageService, $location) {
-   
-         $scope.sort = "category";
-           $scope.count=0;
-          $scope.products = Products.query();
-          $scope.category= $routeParams.category;
-           $scope.subcat = $routeParams.subcat;
-            $scope.buyNow = function(price){
-                 localStorageService.set('totalPrice',price);
-                 $location.path('/buy');
-             };
-           $scope.search = function(searchName){
-               
-             localStorageService.set('search',searchName);
+
+        .controller('AllProductDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location', function($scope, Products, $routeParams, localStorageService, $location) {
+
+            $scope.search = function(searchName) {
+                localStorageService.set('search', searchName);
                 var search = localStorageService.get('search');
-                 $location.path('/search');
-              
+                $location.path('/search');
+
             };
-           
-           //quantity of products in cart
-            $scope.cartQuantityTotal = function(){
+
+            //quantity of products in cart
+            $scope.cartQuantityTotal = function() {
                 var productList = localStorageService.get('productList') || [];
                 return productList.length;
             }
-           
-           $scope.filterTags = function (tag) {
-        //console.log(tag, $scope.catSort);
-         /*$scope.whattoreturn = tag.category == $scope.category;
-               $scope.sub = tag.subcategory == $scope.subcat;*/
-               if((tag.category == $scope.category)&&(tag.subcategory == $scope.subcat))
-                   {
-                       
-                       $scope.count++;
-                   }
-               return ((tag.category == $scope.category)&&(tag.subcategory == $scope.subcat));
-    };
-           
-           
-          /*  $scope.count = function (tag) {
+
+            $scope.sort = "category";
+            $scope.count = 0;
+            $scope.products = Products.query();
+            $scope.category = $routeParams.category;
+
+            $scope.filterTags = function(tag) {
+                //console.log(tag, $scope.catSort);
+                if (tag.category == $scope.category) {
+
+                    $scope.count++;
+                }
+                return tag.category == $scope.category;
+
+            };
+
+
+            $scope.sorting = function(sortOn) {
+                $scope.sort = sortOn;
+            };
+
+
+            $scope.addToCart = function(myProduct) {
+
+                var product = myProduct;
+                var productList = localStorageService.get('productList') || [];
+                $scope.exists = false;
+                angular.forEach(productList, function(val, key) {
+                    if (angular.equals(product._id, val._id)) {
+                        $scope.exists = true
+                    };
+                });
+                if ($scope.exists == false && product.id != "") {
+                    productList.push(product);
+                    localStorageService.set('productList', productList);
+                }
+                if ($scope.exists == false && product.id != "")
+                    swal("Product Added to Cart!", "", "success")
+
+                if ($scope.exists != false || product.id == "") {
+                    swal("Product is already added to Cart!")
+                }
+
+            };
+        }])
+
+
+        .controller('SubcategoryCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location', function($scope, Products, $routeParams, localStorageService, $location) {
+
+            $scope.sort = "category";
+            $scope.count = 0;
+            $scope.products = Products.query();
+            $scope.category = $routeParams.category;
+            $scope.subcat = $routeParams.subcat;
+            $scope.buyNow = function(price) {
+                localStorageService.set('totalPrice', price);
+                $location.path('/buy');
+            };
+            $scope.search = function(searchName) {
+
+                localStorageService.set('search', searchName);
+                var search = localStorageService.get('search');
+                $location.path('/search');
+
+            };
+
+            //quantity of products in cart
+            $scope.cartQuantityTotal = function() {
+                var productList = localStorageService.get('productList') || [];
+                return productList.length;
+            }
+
+            $scope.filterTags = function(tag) {
+                //console.log(tag, $scope.catSort);
+                /*$scope.whattoreturn = tag.category == $scope.category;
+                      $scope.sub = tag.subcategory == $scope.subcat;*/
+                if ((tag.category == $scope.category) && (tag.subcategory == $scope.subcat)) {
+
+                    $scope.count++;
+                }
+                return ((tag.category == $scope.category) && (tag.subcategory == $scope.subcat));
+            };
+
+
+            /*  $scope.count = function (tag) {
                 console.log("in ctrl count")
         //console.log(tag, $scope.catSort);
          /*$scope.whattoreturn = tag.category == $scope.category;
@@ -321,123 +329,182 @@
                    }
               
     };*/
-           
-           $scope.sorting = function(sortOn){
-              $scope.sort = sortOn ;
-           };
-          console.log($scope.category);
-          
-           $scope.addToCart = function(myProduct){
+
+            $scope.sorting = function(sortOn) {
+                $scope.sort = sortOn;
+            };
+            console.log($scope.category);
+
+            $scope.addToCart = function(myProduct) {
                 var product = myProduct;
-              var productList = localStorageService.get('productList') || [];
+                var productList = localStorageService.get('productList') || [];
                 $scope.exists = false;
                 angular.forEach(productList, function(val, key) {
-			if(angular.equals(product._id, val._id)){ $scope.exists = true }; 
-		});
-                if($scope.exists == false && product.id != "") {
-                    productList.push(product); localStorageService.set('productList', productList); }
-                  if($scope.exists == false && product.id != "")
-                swal("Product Added to Cart!", "", "success")
-          
-          if($scope.exists != false ||  product.id == ""){
-               swal("Product is already added to Cart!")
-          }
-                
+                    if (angular.equals(product._id, val._id)) {
+                        $scope.exists = true
+                    };
+                });
+                if ($scope.exists == false && product.id != "") {
+                    productList.push(product);
+                    localStorageService.set('productList', productList);
+                }
+                if ($scope.exists == false && product.id != "")
+                    swal("Product Added to Cart!", "", "success")
+
+                if ($scope.exists != false || product.id == "") {
+                    swal("Product is already added to Cart!")
+                }
+
             };
-           
+
         }])
-      
-      .controller('CartDetailCtrl', ['$scope', 'Products', '$routeParams' ,'localStorageService','$location',function ($scope, Products,$routeParams,localStorageService,$location) {
-          $scope.productList = localStorageService.get('productList');
-          console.log($scope.productList);
-          //quantity of products in cart
-            $scope.cartQuantityTotal = function(){
+
+        .controller('CartDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location', function($scope, Products, $routeParams, localStorageService, $location) {
+            $scope.productList = localStorageService.get('productList');
+            console.log($scope.productList);
+            //quantity of products in cart
+            $scope.cartQuantityTotal = function() {
                 var productList = localStorageService.get('productList') || [];
                 return productList.length;
             }
             
+            //unique item quantity wise product total
+            $scope.itemWiseTotal = function(product){
+                var singlProductTotal = product.itemquant * product.original_price;
+                return singlProductTotal;
+            }
             
-             $scope.search = function(searchName){
-              
-             localStorageService.set('search',searchName);
+            //eco tax on total
+            $scope.taxEcoTotal = function(){
+                $scope.totalSumWOTax = $scope.getTotal();
+                return ($scope.totalSumWOTax*5)/100;
+            }
+
+            
+            //total cost after the tax
+            $scope.getTotalATax = function(){
+                console.log("hello")
+                $scope.withTax=$scope.getTotal() + $scope.taxEcoTotal();
+                console.log($scope.withTax)
+                localStorageService.set('withTax', $scope.withTax);
+                
+                 var withTax = localStorageService.get('withTax');
+                
+                 
+                return ($scope.withTax);
+                
+                
+
+            }
+            
+            $scope.search = function(searchName) {
+
+                localStorageService.set('search', searchName);
                 var search = localStorageService.get('search');
-                 $location.path('/search');
-              
+                $location.path('/search');
+
             };
-           
+
             //increase and decreasing a quantity in the cart
-            $scope.cartItemCount = function(product, incdecby) {  
+            $scope.cartItemCount = function(product, incdecby) {
                 product.itemquant += incdecby;
             }
-            
-            $scope.continue = function(){
+
+            $scope.continue = function() {
                 $location.path('/');
-};
-          //cart products sum total
-         $scope.getTotal = function(){
-            $scope.total = 0;
-             angular.forEach($scope.productList, function(val, key) {
-                
-                   var tempPrice = val.itemquant * val.original_price;
-                
-                 $scope.total += tempPrice;
-             });
-             
-             
-             
-             $scope.buyNow = function(price){
-                 localStorageService.set('totalPrice',$scope.total);
-                  localStorageService.set('buydirect', true);
-                   var buydirect = localStorageService.get('buydirect');
-                   console.log("lssss"+buydirect)
-                 $location.path('/buy');
-             };
-    /*angular.forEach($scope.productList, function(val, key) {
-        total += valval.original_price;
-    });*/
-            
-             
-    return $scope.total;
-}
-          
-          $scope.remove = function(product){
-              console.log(product);
-             angular.forEach($scope.productList, function(val, key) {
-			if(angular.equals(product._id, val._id)){ 
-                 var index=$scope.productList.indexOf(val)
-                 $scope.productList.splice(index,1);     
-            localStorageService.set('productList', $scope.productList);
-                
-            }; 
-		});  
-          };
+            };
+            //cart products sum total
+            $scope.getTotal = function() {
+                $scope.total = 0;
+                angular.forEach($scope.productList, function(val, key) {
+
+                    var tempPrice = val.itemquant * val.original_price;
+
+                    $scope.total += tempPrice;
+                });
+
+                //on clicking checkout button in cart.html
+                $scope.buyNow = function(price) {
+                    console.log($scope.productList);
+                    /*Products.update({"category":$scope.productList[0].category, "subcategory":$scope.productList[0].subcategory, "title":$scope.productList[0].title},{$set:{"Quantity":5}}, function(err){
+                        console.log(err);
+                    })*/
+                    console.log($scope.total);
+                    localStorageService.set('totalPrice', $scope.total);
+                    localStorageService.set('buydirect', true);
+                    var buydirect = localStorageService.get('buydirect');
+                    console.log("lssss" + buydirect)
+                    $location.path('/buy');
+                };
+                /*angular.forEach($scope.productList, function(val, key) {
+                    total += valval.original_price;
+                });*/
+
+
+                return $scope.total;
+            }
+
+            $scope.remove = function(product) {
+                console.log(product);
+                angular.forEach($scope.productList, function(val, key) {
+                    if (angular.equals(product._id, val._id)) {
+                        var index = $scope.productList.indexOf(val)
+                        $scope.productList.splice(index, 1);
+                        localStorageService.set('productList', $scope.productList);
+
+                    };
+                });
+            };
         }])
-      
-       .controller('BuyDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location', function ($scope, Products,$routeParams, localStorageService, $location) {
-         $scope.payOrNo = true;
-           //quantity of products in cart
-            $scope.cartQuantityTotal = function(){
+
+        .controller('BuyDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location', function($scope, Products, $routeParams, localStorageService, $location) {
+            $scope.payOrNo = true;
+            //quantity of products in cart
+            $scope.cartQuantityTotal = function() {
                 var productList = localStorageService.get('productList') || [];
                 return productList.length;
             }
-            
-            $scope.close = function(){
-                 $location.path('/');
+
+            $scope.close = function() {
+                $location.path('/');
             };
-           
-            $scope.removeCart=function()
-          {
-              console.log("in service")
-              
-            var buydirect = localStorageService.get('buydirect');
-              if(buydirect)
-                  {
-                      localStorage.clear();
-                  }
-       
-          }
+
+            $scope.removeCart = function() {
+                console.log("in service")
+
+                var buydirect = localStorageService.get('buydirect');
+                if (buydirect) {
+                    console.log("in buydirect")
+                    $scope.t=localStorageService.get('withTax');
+                    localStorage.clear();
+                    
+                }
+
+            }
+            $scope.buyFlag=localStorageService.get('buydirect');
+            console.log( $scope.buyFlag)
+            if( $scope.buyFlag)
+                {
+                   console.log("in buydirect"+($scope.buyFlag))
+                    
+                    $scope.withTax=localStorageService.get('withTax');
+                    
+                console.log($scope.withTax)
+        
+                }
             
-                     /*uibModalInstance.result.then(function() {
+            if( !($scope.buyFlag))
+                {
+                    console.log("in buydirecffgtgtft"+($scope.buyFlag))
+                    
+                    $scope.withTax=localStorageService.get('totalPrice');
+                    localStorageService.set('withTax', $scope.withTax+($scope.withTax*5)/100);
+                    //$scope.withTax=$scope.withTax+($scope.withTax*5)/100;
+                console.log($scope.withTax)
+        
+                }
+           
+            /*uibModalInstance.result.then(function() {
                     // redirect to new request page.
                      $location.go('/buy', {}, {
                          reload : true
@@ -448,111 +515,118 @@
                         reload : true
                      });
                  });*/
-            
-            $scope.card = function(){
+
+            $scope.card = function() {
                 $location.path('/cardPay');
-};
-            
-       $scope.t=localStorageService.get('totalPrice');
-   return $scope.t;
-        
-           
-        
-        }])
-      
-      
-      .controller('SearchDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location' ,function ($scope, Products,$routeParams, localStorageService, $location) {
-         
-          var searchObj = localStorageService.get('search');
-          
-$scope.products = Products.query({title : searchObj },function(){
-    $scope.getTotal();
-    console.log($scope.total);
-});
-        
-          //cart products sum total
-          $scope.getTotal = function(){
-            $scope.total = 0;
-             angular.forEach($scope.products, function(val, key) {
-                 var tempPrice = val.original_price;
-                 $scope.total += tempPrice;
-              
-             });
-              
-              
-                 
-          
-          $scope.search = function(searchName){
-                
-             localStorageService.set('search',searchName);
-                var search = localStorageService.get('search');
-               $scope.products = Products.query({title : search },function(){
-                  $scope.getTotal();
-                 console.log($scope.total); 
-               });
-              
             };
-          
-           
-         
-            
-         };
-             
-             
-          $scope.addToCart = function(myProduct){
-                  console.log("Add to cart");
+
+            $scope.t = localStorageService.get('withTax');
+            return $scope.t;
+
+
+
+        }])
+
+
+        .controller('SearchDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location', function($scope, Products, $routeParams, localStorageService, $location) {
+
+            var searchObj = localStorageService.get('search');
+
+            $scope.products = Products.query({
+                title: searchObj
+            }, function() {
+                $scope.getTotal();
+                console.log($scope.total);
+            });
+
+            //cart products sum total
+            $scope.getTotal = function() {
+                $scope.total = 0;
+                angular.forEach($scope.products, function(val, key) {
+                    var tempPrice = val.original_price;
+                    $scope.total += tempPrice;
+
+                });
+
+
+
+
+                $scope.search = function(searchName) {
+
+                    localStorageService.set('search', searchName);
+                    var search = localStorageService.get('search');
+                    $scope.products = Products.query({
+                        title: search
+                    }, function() {
+                        $scope.getTotal();
+                        console.log($scope.total);
+                    });
+
+                };
+
+
+
+
+            };
+
+
+            $scope.addToCart = function(myProduct) {
+                console.log("Add to cart");
                 var product = myProduct;
-              var productList = localStorageService.get('productList') || [];
+                var productList = localStorageService.get('productList') || [];
                 $scope.exists = false;
                 angular.forEach(productList, function(val, key) {
-			if(angular.equals(product._id, val._id)){ $scope.exists = true }; 
-		});
-                if($scope.exists == false && product.id != "") {
-                    productList.push(product); localStorageService.set('productList', productList); }
-               if($scope.exists == false && product.id != "")
-                swal("Product Added to Cart!", "", "success")
-          
-          if($scope.exists != false ||  product.id == ""){
-               swal("Product is already added to Cart!")
-          }
-                
+                    if (angular.equals(product._id, val._id)) {
+                        $scope.exists = true
+                    };
+                });
+                if ($scope.exists == false && product.id != "") {
+                    productList.push(product);
+                    localStorageService.set('productList', productList);
+                }
+                if ($scope.exists == false && product.id != "")
+                    swal("Product Added to Cart!", "", "success")
+
+                if ($scope.exists != false || product.id == "") {
+                    swal("Product is already added to Cart!")
+                }
+
             };
-          
-          //quantity of products in cart
-            $scope.cartQuantityTotal = function(){
+
+            //quantity of products in cart
+            $scope.cartQuantityTotal = function() {
                 var productList = localStorageService.get('productList') || [];
                 return productList.length;
             }
         }])
-      
-      
-      .controller('CardPayDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService' ,'$location',function ($scope, Products,$routeParams, localStorageService,$location) {
-        
-         //quantity of products in cart
-            $scope.cartQuantityTotal = function(){
+
+
+        .controller('CardPayDetailCtrl', ['$scope', 'Products', '$routeParams', 'localStorageService', '$location', function($scope, Products, $routeParams, localStorageService, $location) {
+
+            //quantity of products in cart
+            $scope.cartQuantityTotal = function() {
                 var productList = localStorageService.get('productList') || [];
                 return productList.length;
-            }  
-       $scope.close = function(){
-                 $location.path('/');
+            }
+            $scope.close = function() {
+                $location.path('/');
             };
-        
-          
-          
-          $scope.removeCart=function()
-          {
-              console.log("in service")
-              
-            var buydirect = localStorageService.get('buydirect');
-              if(buydirect)
-                  {
-                      localStorage.clear();
-                  }
-       
-          }
+
+
+
+            $scope.removeCart = function() {
+                console.log("in service")
+
+                var buydirect = localStorageService.get('buydirect');
+                if (buydirect) {
+                    localStorage.clear();
+                }
+
+            }
         }])
-      
-      .controller('CatalogueController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
+
+
+         .controller('CatalogueController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
                 
                 $scope.products = []; 
                 $scope.products_insert= function(){
@@ -564,62 +638,63 @@ $scope.products = Products.query({title : searchObj },function(){
                 };
         }])  
 
-      
-     
-      
-      
-    
+
+
+
+
         //---------------
         // Routes
         //---------------
 
-       .config(['$routeProvider', function ($routeProvider) {
-          $routeProvider
-            .when('/', {
-              templateUrl: '/index1.html',
-              controller: 'ProductController'
-            }).when('/products1', {
-              templateUrl: '/products1.html',
-            }).when('/about', {
-              templateUrl: '/about.html',
-            }).when('/contact', {
-              templateUrl: '/contact.html',
-            }).when('/allProduct/:category', {
-              templateUrl: '/allProduct.html',
-              controller: 'AllProductDetailCtrl'
-           }).when('/allProductLatest/:category', {
-              templateUrl: '/allProductLatest.html',
-              controller: 'AllProductDetailCtrl'
-           }).when('/products/:id', {
-              templateUrl: '/single.html',
-              controller: 'ProductDetailCtrl'
-           }).when('/cart', {
-              templateUrl: '/cart.html',
-              controller: 'CartDetailCtrl'
-           }).when('/category/:category/subcategory/:subcat', {
-              templateUrl: '/subcategory.html',
-              controller: 'SubcategoryCtrl'
-           }).when('/buy', {
-              templateUrl: '/buy.html',
-              controller: 'BuyDetailCtrl'
-           }).when('/search', {
-              templateUrl: '/search.html',
-              controller: 'SearchDetailCtrl'
-           }).when('/aboutUs', {
-              templateUrl: '/aboutUs.html',
-              controller: 'SearchDetailCtrl'
-           }).when('/cardPay', {
-              templateUrl: '/cardPay.html',
-              controller: 'CardPayDetailCtrl'
-           }).when('/catalogue', {
-              templateUrl: '/catalogue.html',
-              controller: 'CatalogueController'
-           });
-        }]);  
+        .config(['$routeProvider', function($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: '/index1.html',
+                    controller: 'ProductController'
+                }).when('/products1', {
+                    templateUrl: '/products1.html',
+                }).when('/about', {
+                    templateUrl: '/about.html',
+                }).when('/contact', {
+                    templateUrl: '/contact.html',
+                }).when('/allProduct/:category', {
+                    templateUrl: '/allProduct.html',
+                    controller: 'AllProductDetailCtrl'
+                }).when('/allProductLatest/:category', {
+                    templateUrl: '/allProductLatest.html',
+                    controller: 'AllProductDetailCtrl'
+                }).when('/products/:id', {
+                    templateUrl: '/single.html',
+                    controller: 'ProductDetailCtrl'
+                }).when('/cart', {
+                    templateUrl: '/cart.html',
+                    controller: 'CartDetailCtrl'
+                }).when('/category/:category/subcategory/:subcat', {
+                    templateUrl: '/subcategory.html',
+                    controller: 'SubcategoryCtrl'
+                }).when('/buy', {
+                    templateUrl: '/buy.html',
+                    controller: 'BuyDetailCtrl'
+                }).when('/search', {
+                    templateUrl: '/search.html',
+                    controller: 'SearchDetailCtrl'
+                }).when('/aboutUs', {
+                    templateUrl: '/aboutUs.html',
+                    controller: 'SearchDetailCtrl'
+                }).when('/cardPay', {
+                    templateUrl: '/cardPay.html',
+                    controller: 'CardPayDetailCtrl'
+                }).when('/catalogue', {
+                    templateUrl: '/catalogue.html',
+                    controller: 'CatalogueController'
+                });
+        }]);
+
     </script>
-    </head>
-      <body>
-          <ng-view></ng-view>
-  </body>
-    
+</head>
+
+<body>
+    <ng-view></ng-view>
+</body>
+
 </html>

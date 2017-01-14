@@ -76,11 +76,11 @@ ul.support li a {
 	text-align: center;
 	padding-top:1.7em;
 }
-.account,.cart{
+.account,.cartdf{
 	float:left;
 	width:40%;
 }
-.cart{
+.cartdf{
 	width:24%;
 }
 .account a span{
@@ -95,7 +95,7 @@ ul.support li a {
 	font-size: 1em;
 	color: #000;
 }
-.cart a span{
+.cartdf a span{
 	background: url(../images/img-sprite.png) -172px -28px;
 	width: 26px;
 	height: 26px;
@@ -178,6 +178,7 @@ ul.kid-menu{
 	list-style: none;
 	margin: 0;
 	background: #FBFBFC;
+    font-size: initial;
 }
 ul {
 	padding: 0;
@@ -1950,3 +1951,6 @@ background: url(../images/outofStock.jpg);
     z-index: 99999;
     height: 296px;
 }
+.disableScroll{
+    overflow: hidden;
+} 

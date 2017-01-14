@@ -10,58 +10,68 @@
         color: black;
         padding-left: 12px;
     }
+
 </style>
 <style>
-    .Heading{
-    font-size: 20px;
-    margin: 0px 20px 20px;
-    padding: 0;
+    .Heading {
+        font-size: 20px;
+        margin: 0px 20px 20px;
+        padding: 0;
     }
 
 </style>
 
 <style>
-.buttonCheck {
-    background-color: #f97e76; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
+    .buttonCheck {
+        background-color: #f97e76;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
     
-.buttonCheck:hover {background-color: #3e8e41}
+    .buttonCheck:hover {
+        background-color: #3e8e41
+    }
+    
+    .buttonCheck4 {
+        border-radius: 12px;
+    }
 
-.buttonCheck4 {border-radius: 12px;}
 </style>
 
 <style>
-.buttonProceed {
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #f97e76;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-}
+    .buttonProceed {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #f97e76;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+    }
+    
+    .buttonProceed:hover {
+        background-color: #3e8e41
+    }
+    
+    .buttonProceed:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
 
-.buttonProceed:hover {background-color: #3e8e41}
-
-.buttonProceed:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
 </style>
 <div class="header">
     <div class="top-header">
@@ -108,59 +118,74 @@
     </div>
     <div class="bottom-header">
         <div class="container">
+
             <div class="header-bottom-left">
                 <div class="logo">
                     <a href="#/"><img src="./images/alogo.png" alt=" " height="55px" width="173px" /></a>
                 </div>
-                      <div class="search">
-                    <input type="text" ng-model="searchItem" value="searchItem" >
+                <div class="search">
+                    <input type="text" ng-model="searchItem" value="searchItem">
                     <input type="submit" ng-click="search(searchItem)" value="SEARCH" ng-disabled="!searchItem"> </div>
                 <div class="clearfix"> </div>
             </div>
             <div class="header-bottom-right">
-                <div class="account"><a href="login.html"><span> </span>YOUR ACCOUNT</a></div>
-                <ul class="login">
-                    <li><a href="login.html"><span> </span>LOGIN</a></li> |
-                    <li><a href="register.html">SIGNUP</a></li>
-                </ul>
-                <div class="cart"><a href="#/cart"><span> </span>CART ({{cartQuantityTotal()}})</a></div>
+                <div class="cartdf" style="margin-left: 330px;"><a href="#/cart"><span> </span>CART ({{(cartQuantityTotal())}}) <span class="tooltip">Empty</span></a></div>
                 <div class="clearfix"> </div>
             </div>
             <div class="clearfix"> </div>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="shoes-grid">
-<!-- CART.html --> 
-            <div class="col-md-4 chain-grid grid-top-chain" ng-repeat="product in productList">
-                <a href="#/products/{{product._id}}"><img class="img-responsive chain" ng-src="{{product.img}}" height="270px" width="180px"></a> 
-                <div class="grid-chain-bottom">
-                    <h6>{{product.title}}</h6>
-                    <div class="star-price">
-                        <div class="dolor-grid"> <span class="actual">INR {{product.original_price}}</span> <br>
-                            <div class="btn-group" ng-init="product.itemquant = 1">
-                         <button type="button" class="btn btn-info" ng-disabled="product.itemquant == 1" ng-click="cartItemCount(product, -1)">-</button>
-                        <button type="button" class="btn btn-info" name="quantity" ng-model="quantity">{{product.itemquant}}</button>
-                        <button type="button" class="btn btn-info"  ng-disabled="product.Quantity == product.itemquant || product.itemquant >= 4" ng-click="cartItemCount(product, 1)">+</button>
-                        </div><!--<span class="reducedfrom">400$</span>--> <!--<span class="rating">-->
-									       <!-- <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-									        <label for="rating-input-1-5" class="rating-star1"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-									        <label for="rating-input-1-4" class="rating-star1"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-									        <label for="rating-input-1-3" class="rating-star"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-									        <label for="rating-input-1-2" class="rating-star"> </label>
-									        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-									        <label for="rating-input-1-1" class="rating-star"> </label>
-							    	   </span> --></div> 
-                        <a class="now-get get-cart" ng-click="remove(product)">Remove <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-                        
-                        <div class="clearfix"> </div>
-                    </div>
-                </div>
-       </div>
+<section id="cart_items">
+    <div class="container">
+        <!-- NEW CART -->
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed disableScroll">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Item</td>
+                        <td class="description"></td>
+                        <td class="price">Price</td>
+                        <td class="quantity">Quantity</td>
+                        <td class="total">Total</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in productList">
+                        <td class="cart_product">
+                            <a href="#/products/{{product._id}}"><img ng-src="{{product.img}}" alt="" height="150px" width="180px"></a>
+                        </td>
+                        <td class="cart_description">
+                            <h4><a href="">{{product.title}}</a></h4>
+
+                        </td>
+                        <td class="cart_price">
+                            <p>Rs. {{product.original_price}}</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button" ng-init="product.itemquant = 1">
+                                <button type="button" class="btn btn-info" ng-disabled="product.itemquant == 1" ng-click="cartItemCount(product, -1)"> - </button>
+                                <button type="button" class="btn btn-info" type="text" name="quantity" ng-model="quantity">{{product.itemquant}}</button>
+                                <button type="button" class="btn btn-info" ng-disabled="product.Quantity == product.itemquant || product.itemquant >= 4" ng-click="cartItemCount(product, 1)"> + </button>
+                            </div>
+                        </td>
+                        <td class="cart_total">
+                            <p class="cart_total_price">Rs. {{itemWiseTotal(product)}}</p>
+                        </td>
+                        <td class="cart_delete">
+                            <a class="cart_quantity_delete" href="" ng-click="remove(product)"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+        <!--   <div class="shoes-grid">
+        
+
         
      <div id="contentFree" class="float_r">
      <div ng-show="total">
@@ -172,12 +197,12 @@
          <button type="button" class="buttonProceed" ng-click="continue()" >Continue Shopping</button>
     </div>
         </div>
-</div>
+</div> -->
 
-<!-- cart.html end -->
+        <!-- cart.html end -->
 
 
-	  <div class="sub-cate">
+        <!-- <div class="sub-cate">
         	 <div class=" top-nav rsidebar span_1_of_left">
             <h3 class="cate">CATEGORIES</h3>
             <ul class="menu">
@@ -186,7 +211,7 @@
                     <ul class="cute collapse" id="electronics">
                         <li class="subitem1"><a href="#/category/electronics/subcategory/mobile">Mobile </a></li>
                         <li class="subitem1"><a href="#/category/electronics/subcategory/laptop">Laptop</a></li>
-                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Accessories </a></li>
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Printer </a></li>
                     </ul>
                 </li>
             </ul>
@@ -215,7 +240,7 @@
                      <img  ng-src="./images/sports/icon.png"><span class="caret"></span>
                     <ul class="cute collapse" id="sports">
                         <li class="subitem1"><a href="#/category/sports/subcategory/cricket">Cricket </a></li>
-                        <li class="subitem1"><a href="#/category/sports/subcategory/accessories">Accessories </a></li>
+                        <li class="subitem1"><a href="#/category/sports/subcategory/badminton">Badminton </a></li>
                         <li class="subitem1"><a href="#/category/sports/subcategory/fitness">Fitness </a></li>
                     </ul>
                 </li>
@@ -238,9 +263,12 @@
                     </ul>
                 </li>
             </ul>
-        </div>
+          
+            
+            
+        </div> -->
         <!--initiate accordion-->
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
             $(function () {
                 var menu_ul = $('.menu > li > ul')
                     , menu_a = $('.menu > li > a');
@@ -268,60 +296,96 @@
                 </li>
             </script>
         </div>
+    </div> -->
+
     </div>
-   
-</div>
-<div class="footer">
-    <div class="footer-top">
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="footer-bottom-cate">
-                <h6>CATEGORIES</h6>
-                <ul>
-                    <li>Electronics</li>
-                    <li>Clothing</li>
-                    <li>Books</li>
-                    <li>Sports</li>
-                    <li>Home & Furniture</li>
-                    <li>Appliances</li>
-                </ul>
+</section>
+
+<!-- cart sum total box -->
+<section id="do_action">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="total_area" ng-hide="!total">
+                    <ul>
+                        <li>Cart Sub Total <span>Rs. {{getTotal()}}</span></li>
+                        <li>Eco Tax <span>Rs. {{taxEcoTotal()}}</span></li>
+                        <li>Shipping Cost <span>Free</span></li>
+                        <li>Total <span>Rs. {{getTotalATax()}}</span></li>
+                    </ul>
+
+                    <a class="btn btn-default check_out" href="" ng-click="buyNow(product.original_price)">Check Out</a>
+                </div>
+
+                <div ng-hide="total">
+                    <h1>Cart is empty!!</h1>
+                    <button type="button" class="buttonProceed" ng-click="continue()">Continue Shopping</button>
+
+                </div>
+
             </div>
-            <div class="footer-bottom-cate bottom-grid-cat">
-                <h6>FEATURED PRODUCTS</h6>
-                <ul>
-                    <li>Zara Men Shirt</li>
-                    <li>Apple Iphone 7 plus</li>
-                    <li>Induction Cooker</li>
-                    <li>One Indian Girl</li>
-                    <li>HP Laptop</li>
-                </ul>
-            </div>
-            <div class="footer-bottom-cate">
-                <h6>TOP BRANDS</h6>
-                <ul>
-                    <li>Zara</li>
-                    <li>HP</li>
-                    <li>Apple</li>
-                    <li>SS-Cricket</li>
-                    <li>SleepWell</li>
-                </ul>
-            </div>
-            <div class="footer-bottom-cate cate-bottom" style="font-size: larger">
-                <h5>OUR ADDERSS</h5>
-                <ul>
-                    <li>3rd and 4th Floor</li>
-                    <li>North wing, JVP Building</li>
-                    <li> Plot No. 5</li>
-                    <li>  Software Units Layout</li>
-                    <li> Madhapur, Hyderabad, Telangana 500081 </li>
-                    <li class="phone">PH : 040 3911 1700</li>
-                    <li class="temp">
-                       <!-- <p class="footer-class">Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>-->
-                    </li>
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
         </div>
     </div>
+</section>
+<!--/#do_action-->
+
+<div class="form-group"></div>
+<div class="form-group"></div>
+<div class="form-group"></div>
+<div class="form-group"></div>
+<div class="form-group"></div>
+
+<div class="footer">
+    <div class="footer-top">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-cate">
+                    <h6>CATEGORIES</h6>
+                    <ul>
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">Clothing</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Home & Furniture</a></li>
+                        <li><a href="#">Appliances</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-cate bottom-grid-cat">
+                    <h6>FEATURED PRODUCTS</h6>
+                    <ul>
+                        <li><a href="#">Zara Men Shirt</a></li>
+                        <li><a href="#">Apple Iphone 7 plus</a></li>
+                        <li><a href="#">Induction Cooker</a></li>
+                        <li><a href="#">One Indian Girl</a></li>
+                        <li><a href="#">HP Laptop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-cate">
+                    <h6>TOP BRANDS</h6>
+                    <ul>
+                        <li><a href="#">Zara</a></li>
+                        <li><a href="#">HP</a></li>
+                        <li><a href="#">Apple</a></li>
+                        <li><a href="#">SS-Cricket</a></li>
+                        <li><a href="#">SleepWell</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom-cate cate-bottom">
+                    <h6>OUR ADDERSS</h6>
+                    <ul>
+                        <li>3rd and 4th Floor</li>
+                        <li>North wing, JVP Building</li>
+                        <li> Plot No. 5</li>
+                        <li> Software Units Layout</li>
+                        <li> Madhapur, Hyderabad, Telangana 500081 </li>
+                        <li class="phone">PH : 040 3911 1700</li>
+                        <li class="temp">
+                            <!-- <p class="footer-class">Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>-->
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
     </div>
 </div>

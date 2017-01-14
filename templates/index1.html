@@ -102,13 +102,7 @@
                     <input type="submit" ng-click="search(searchItem)" value="SEARCH" ng-disabled="!searchItem" ng-keydown="$event.which === 13 && action()"> </div>
             </div>
             <div class="header-bottom-right">
-                <div class="account"><a href="login.html"><span> </span>YOUR ACCOUNT</a></div>
-                <ul class="login">
-                    <li><a href="login.html"><span> </span>LOGIN</a></li> |
-                    <li><a href="register.html">SIGNUP</a></li>
-                </ul>
-                <div class="cart"><a href="#/cart"><span> </span>CART ({{(cartQuantityTotal())}}) </a></div>
-
+                <div class="cartdf" style="margin-left: 330px;"><a href="#/cart"><span> </span>CART ({{(cartQuantityTotal())}}) <span class="tooltip">Empty</span></a></div>
                 <div class="clearfix"> </div>
             </div>
             <div class="clearfix"> </div>
