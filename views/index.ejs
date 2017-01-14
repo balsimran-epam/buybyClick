@@ -24,7 +24,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.4.0/ui-bootstrap-tpls.min.js"></script>
 
       
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.5.0/angular-local-storage.min.js"></script>
@@ -79,7 +79,12 @@
                $scope.buyNow = function(price){
                  console.log(price);
                  localStorageService.set('totalPrice',price);
+                   localStorageService.set('buydirect', false);
+                   var buydirect = localStorageService.get('buydirect');
+                   console.log("lssss"+buydirect)
                  $location.path('/buy');
+                   
+                   
              };
             
             $scope.search = function(searchName){
@@ -88,6 +93,8 @@
                  $location.path('/search');
               
             };
+            
+            
             
              //quantity of products in cart
             $scope.cartQuantityTotal = function(){
@@ -111,29 +118,25 @@
             
   $scope.slides = [
     {
-      image: 'http://img.stalkbuylove.com/media/wysiwyg/new_banners/Desktop_MainBanner1_Partywear_30122016_V1.jpg' 
+      image: './images/Slider/8.jpg' 
     },
     {
-      image: 'http://img.stalkbuylove.com/media/wysiwyg/new_banners/Desktop_MainBanner1_BlackEdit_30122016_V1.jpg'
+      image: './images/Slider/4.jpg'
     },
     {
-      image: 'https://assets.tatacliq.com/medias/sys_master/images/10287826698270.jpg'
+      image: './images/Slider/3.jpg'
     },   
    {
-      image:'https://assets.tatacliq.com/medias/sys_master/images/10287826829342.jpg  '
+      image:'./images/Slider/5.jpg'
     } ,  
       {
-      image:'https://assets.tatacliq.com/medias/sys_master/images/10258535055390.jpg',
+      image:'./images/Slider/11.jpg',
     },
       {
-      image:'http://g-ecx.images-amazon.com/images/G/31/img16/Newtiles/1_GWHERO_4500X900-Eoss-Csaual._UX1500_SX1500_.jpg ',
+      image:'./images/Slider/2.jpg',
     },
       {
-      image:'http://g-ecx.images-amazon.com/images/G/31/img17/Home/Bunks/EOSS_GW_bunk-desktop._UX1500_SX1500_.jpg ',
-    },
-    
-  {
-      image:'http://g-ecx.images-amazon.com/images/G/31/img16/Books/112016/tb/GW-copy-new._UX1500_SX1500_.jpg ',
+      image:'./images/Slider/1.jpg',
     }
   ];
         }])
@@ -169,6 +172,9 @@
      $scope.buyNow = function(price){
                  console.log(price);
                  localStorageService.set('totalPrice',price);
+         localStorageService.set('buydirect', false);
+                   var buydirect = localStorageService.get('buydirect');
+                   console.log("lssss"+buydirect)
                  $location.path('/buy');
              };
          $scope.filterIds = function (tag) {
@@ -381,6 +387,9 @@
              
              $scope.buyNow = function(price){
                  localStorageService.set('totalPrice',$scope.total);
+                  localStorageService.set('buydirect', true);
+                   var buydirect = localStorageService.get('buydirect');
+                   console.log("lssss"+buydirect)
                  $location.path('/buy');
              };
     /*angular.forEach($scope.productList, function(val, key) {
@@ -415,6 +424,18 @@
             $scope.close = function(){
                  $location.path('/');
             };
+           
+            $scope.removeCart=function()
+          {
+              console.log("in service")
+              
+            var buydirect = localStorageService.get('buydirect');
+              if(buydirect)
+                  {
+                      localStorage.clear();
+                  }
+       
+          }
             
                      /*uibModalInstance.result.then(function() {
                     // redirect to new request page.
@@ -502,9 +523,6 @@ $scope.products = Products.query({title : searchObj },function(){
                 var productList = localStorageService.get('productList') || [];
                 return productList.length;
             }
-            
-         
-        
         }])
       
       
@@ -525,13 +543,16 @@ $scope.products = Products.query({title : searchObj },function(){
           {
               console.log("in service")
               
-              localstorage.removeItem("productList")
+            var buydirect = localStorageService.get('buydirect');
+              if(buydirect)
+                  {
+                      localStorage.clear();
+                  }
+       
           }
         }])
       
-      
-      
-       .controller('CatalogueController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
+      .controller('CatalogueController', ['$scope', 'Products', '$routeParams','localStorageService',function ($scope, Products, $routeParams,localStorageService) {
                 
                 $scope.products = []; 
                 $scope.products_insert= function(){
@@ -542,6 +563,9 @@ $scope.products = Products.query({title : searchObj },function(){
                     });   
                 };
         }])  
+
+      
+     
       
       
     

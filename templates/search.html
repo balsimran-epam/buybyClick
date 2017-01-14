@@ -41,7 +41,7 @@
         <div class="container">
             <div class="header-bottom-left">
                 <div class="logo">
-                    <a href="/"><img src="images/logo.png" alt=" " /></a>
+                    <a href="/"><img src="./images/alogo.png" alt=" " height="55px" width="173px" /></a>
                 </div>
                 <div class="search">
                     <input type="text" ng-model="searchItem" value="searchItem" >
@@ -70,8 +70,9 @@
     </div>
     <div class="shoes-grid" ng-show="total">
         <div class="grid-product">
-   <div class=" product-grid col-xs-4" ng-repeat="product in products">
+   <div class=" product-grid col-xs-4" style="float: left; font-size: medium; width: 33.333%;" ng-repeat="product in products">
 			<div class="content_box">
+                 <div ng-show="{{product.Quantity == 0}}"><span class="outofStock"> </span></div>
                 <a href="#/products/{{product._id}}">
 			   	<div class="left-grid-view grid-view-left">
                     <a href="#/products/{{product._id}}"><img ng-src="{{product.img}}" height="250px" width="150px" class="img-responsive watch-right" alt=""/></a>
@@ -81,17 +82,24 @@
                     </div>
 				   	  </a>
 				</div>
-				    <h4><a href="#/products/{{product._id}}">{{product.title}}</a></h4>
+				    <center><h4><a href="#/products/{{product._id}}">{{product.title}}</a></h4></center>
 				     <!--<p>{{product.description}}</p>-->
-				     <p>Rs. {{product.original_price}}</p>
+				     <center><h6>INR {{product.original_price}}</h6></center>
               <!--<a class="now-get get-cart" ng-click="buyNow(product.original_price)">BUY NOW</a>-->
-            <a class="now-get" ng-click="addToCart(product)">Add To Cart</a>
-         
+          <!--  <a class="now-get" ng-click="addToCart(product)">Add To Cart</a>-->
+          <div ng-show="!({{product.Quantity}} == 0)">
+                  <a class="now-get  size1 changeToLink" ng-click="addToCart(product)">Add To Cart</a>
+              </div>
+        
       
-   
+  <!-- <div ng-show="!({{product.Quantity}} == 0)">
+                  <a class="now-get" ng-click="addToCart(product)">Add To Cart</a>
+              </div>-->
               <div ng-if="$index % 3 == 2">
+                     
           <br>
                   <br>
+                      <br>
               </div>
       
        
@@ -110,7 +118,7 @@
                     <ul class="cute collapse" id="electronics">
                         <li class="subitem1"><a href="#/category/electronics/subcategory/mobile">Mobile </a></li>
                         <li class="subitem1"><a href="#/category/electronics/subcategory/laptop">Laptop</a></li>
-                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Printer </a></li>
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Accessories </a></li>
                     </ul>
                 </li>
             </ul>
@@ -139,7 +147,7 @@
                      <img  ng-src="./images/sports/icon.png"><span class="caret"></span>
                     <ul class="cute collapse" id="sports">
                         <li class="subitem1"><a href="#/category/sports/subcategory/cricket">Cricket </a></li>
-                        <li class="subitem1"><a href="#/category/sports/subcategory/badminton">Badminton </a></li>
+                        <li class="subitem1"><a href="#/category/sports/subcategory/accessories">Accessories </a></li>
                         <li class="subitem1"><a href="#/category/sports/subcategory/fitness">Fitness </a></li>
                     </ul>
                 </li>
@@ -162,9 +170,6 @@
                     </ul>
                 </li>
             </ul>
-          
-            
-            
         </div>
        
         <!--initiate accordion-->
@@ -231,36 +236,36 @@
             <div class="footer-bottom-cate">
                 <h6>CATEGORIES</h6>
                 <ul>
-                    <li><a href="#">Electronics</a></li>
-                    <li><a href="#">Clothing</a></li>
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Home & Furniture</a></li>
-                    <li><a href="#">Appliances</a></li>
+                    <li>Electronics</li>
+                    <li>Clothing</li>
+                    <li>Books</li>
+                    <li>Sports</li>
+                    <li>Home & Furniture</li>
+                    <li>Appliances</li>
                 </ul>
             </div>
             <div class="footer-bottom-cate bottom-grid-cat">
                 <h6>FEATURED PRODUCTS</h6>
                 <ul>
-                    <li><a href="#">Zara Men Shirt</a></li>
-                    <li><a href="#">Apple Iphone 7 plus</a></li>
-                    <li><a href="#">Induction Cooker</a></li>
-                    <li><a href="#">One Indian Girl</a></li>
-                    <li><a href="#">HP Laptop</a></li>
+                    <li>Zara Men Shirt</li>
+                    <li>Apple Iphone 7 plus</li>
+                    <li>Induction Cooker</li>
+                    <li>One Indian Girl</li>
+                    <li>HP Laptop</li>
                 </ul>
             </div>
             <div class="footer-bottom-cate">
                 <h6>TOP BRANDS</h6>
                 <ul>
-                    <li><a href="#">Zara</a></li>
-                    <li><a href="#">HP</a></li>
-                    <li><a href="#">Apple</a></li>
-                    <li><a href="#">SS-Cricket</a></li>
-                    <li><a href="#">SleepWell</a></li>
+                    <li>Zara</li>
+                    <li>HP</li>
+                    <li>Apple</li>
+                    <li>SS-Cricket</li>
+                    <li>SleepWell</li>
                 </ul>
             </div>
-            <div class="footer-bottom-cate cate-bottom">
-                <h6>OUR ADDERSS</h6>
+            <div class="footer-bottom-cate cate-bottom" style="font-size: larger">
+                <h5>OUR ADDERSS</h5>
                 <ul>
                     <li>3rd and 4th Floor</li>
                     <li>North wing, JVP Building</li>

@@ -201,7 +201,7 @@ ul {
 	position: relative;
 	font-size:1.1em;
 	font-weight: 400;
-	color: #000;
+	color: #f97e76;
 	text-decoration:none;
 	border-bottom: 1px solid #ddd;
 	font-weight:700;
@@ -422,6 +422,15 @@ width: 49%;
 	float:right;
 	padding: 0.4em 0.6em;
 	font-size: 1em;
+       
+}
+
+
+.view-allget,a.get-cartget{
+	float:right;
+	padding: 0.4em 0.6em;
+	font-size: 1em;
+        margin-right: 130px;
 }
 a.view-all span{
 	background: url(../images/arrow2.png)0px 0px;
@@ -1902,4 +1911,42 @@ a.size{
 .desc{
         font-size: 15px;
     font-family: serif;
+}
+
+.outofStock{
+background: url(../images/outofStock.jpg);
+    width: 101px;
+    opacity: 1;
+    height: 52px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* display: block; */
+    position: absolute;
+    /* top: 2%; */
+    /* right: 2%; */
+    z-index: 2;
+} 
+
+.size1{
+        float: right;
+    padding: 0.4em 3.6em;
+    font-size: 1em;
+}
+
+.sweet-alert {
+    background-color: white;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    width: 374px;
+    padding: 17px;
+    border-radius: 5px;
+    text-align: center;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -256px;
+    margin-top: -200px;
+    overflow: hidden;
+    display: none;
+    z-index: 99999;
+    height: 296px;
 }

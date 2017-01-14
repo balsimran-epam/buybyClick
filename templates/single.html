@@ -2,17 +2,17 @@
 <html>
 <head>
 <title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!--<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />-->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
-<link rel="stylesheet" href="css/etalage.css" type="text/css" media="all" />
+<!--<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link rel="stylesheet" href="css/etalage.css" type="text/css" media="all" />-->
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>-->
 <!--//fonts-->
-<script src="js/jquery.min.js"></script>
+<!--<script src="js/jquery.min.js"></script>-->
 <!--
 <script src="js/jquery.etalage.min.js"></script>-->
 <!--
@@ -92,7 +92,7 @@
         <div class="container">
             <div class="header-bottom-left">
                 <div class="logo">
-                    <a href="/"><img src="images/logo.png" alt=" " /></a>
+                    <a href="/"><img src="./images/alogo.png" alt=" " height="55px" width="173px"/></a>
                 </div>
                 <div class="search">
                     <input type="text" ng-model="searchItem" value="searchItem" >
@@ -105,7 +105,8 @@
                     <li><a href="login.html"><span> </span>LOGIN</a></li> |
                     <li><a href="register.html">SIGNUP</a></li>
                 </ul>
-               <div class="cart"><a href="#/cart"><span> </span>CART ({{(cartQuantityTotal())}})</a></div>
+                <div class="cart"><a href="#/cart"><span> </span>CART ({{(cartQuantityTotal())}}) </a></div>
+
                 <div class="clearfix"> </div>
             </div>
             <div class="clearfix"> </div>
@@ -118,6 +119,7 @@
          
 	 	<div class=" single_top">
              <div ng-repeat="product in products | filter: filterIds">
+                  <div ng-show="{{product.Quantity == 0}}"><span class="outofStock"> </span></div>
 	      <div class="single_grid">
 				<div class="grid images_3_of_2">
 						 <div class="clearfix"> </div>		
@@ -143,11 +145,35 @@
 				</div>
           	    <div class="clearfix"> </div>
           	   
-              <a class="now-get-single get-cart-in alignBuy" ng-click="buyNow(product.original_price)">BUY NOW</a> 
+            <!--  <a class="now-get-single get-cart-in alignBuy" ng-click="buyNow(product.original_price)">BUY NOW</a> -->
                     <br><br>
-                    <a class="now-get-single get-cart-in alignCart" ng-click="addToCart(product)">Add To Cart&nbsp;&nbsp;<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+                   <!-- <a class="now-get-single get-cart-in alignCart" ng-click="addToCart(product)">Add To Cart&nbsp;&nbsp;<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>-->
+                 <div ng-show="!({{product.Quantity}} == 0)">
+                     
+                     <!--class="now-get-single get-cart-in alignCart"-->
+                  <a  class="now-get get-cart changeToLink" ng-click="addToCart(product)" style=" margin-top: -411px;">Add To Cart&nbsp;&nbsp;<span class=" glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+                                   <a class="now-get-single get-cart alignBuy" ng-click="buyNow(product.original_price)">BUY NOW</a> 
+              </div>
                  
                  
+                 
+                 <!--<div ng-show="({{product.Quantity}} == 0)">
+                     
+                     class="now-get-single get-cart-in alignCart"
+                  <p style="margin-top: -471px;
+    margin-left: 592px;" >out of stock </p>
+              </div>-->
+                   <!--<div ng-show="({{product.Quantity}} == 0)">
+                  <img ng-src="./images/sold_out.png" style="margin-top: -800px;
+    margin-left: 492px;" height="150px" width="250px">
+              </div>-->
+                 
+                  <div ng-if="$index % 3 == 2">
+                    
+          <br>
+                  <br>
+                      <br>
+              </div>
                
                  </div>
 	<script type="text/javascript" src="js/jquery.flexisel.js"></script>
@@ -163,7 +189,7 @@
                     <ul class="cute collapse" id="electronics">
                         <li class="subitem1"><a href="#/category/electronics/subcategory/mobile">Mobile </a></li>
                         <li class="subitem1"><a href="#/category/electronics/subcategory/laptop">Laptop</a></li>
-                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Printer </a></li>
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Accessories </a></li>
                     </ul>
                 </li>
             </ul>
@@ -192,7 +218,7 @@
                      <img  ng-src="./images/sports/icon.png"><span class="caret"></span>
                     <ul class="cute collapse" id="sports">
                         <li class="subitem1"><a href="#/category/sports/subcategory/cricket">Cricket </a></li>
-                        <li class="subitem1"><a href="#/category/sports/subcategory/badminton">Badminton </a></li>
+                        <li class="subitem1"><a href="#/category/sports/subcategory/accessories">Accessories </a></li>
                         <li class="subitem1"><a href="#/category/sports/subcategory/fitness">Fitness </a></li>
                     </ul>
                 </li>
@@ -239,7 +265,8 @@
 			
 			});
 		</script>
-						
+					<!--
+	   		     	 <a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a> 	-->
 			</div>
 <div class="clearfix"> </div>			
 		</div>
@@ -259,40 +286,40 @@
 			</div>
 		</div>
 		<div class="footer-bottom">
-			<div class="container">
+        <div class="container">
             <div class="footer-bottom-cate">
                 <h6>CATEGORIES</h6>
                 <ul>
-                    <li><a href="#">Electronics</a></li>
-                    <li><a href="#">Clothing</a></li>
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Home & Furniture</a></li>
-                    <li><a href="#">Appliances</a></li>
+                    <li>Electronics</li>
+                    <li>Clothing</li>
+                    <li>Books</li>
+                    <li>Sports</li>
+                    <li>Home & Furniture</li>
+                    <li>Appliances</li>
                 </ul>
             </div>
             <div class="footer-bottom-cate bottom-grid-cat">
                 <h6>FEATURED PRODUCTS</h6>
                 <ul>
-                    <li><a href="#">Zara Men Shirt</a></li>
-                    <li><a href="#">Apple Iphone 7 plus</a></li>
-                    <li><a href="#">Induction Cooker</a></li>
-                    <li><a href="#">One Indian Girl</a></li>
-                    <li><a href="#">HP Laptop</a></li>
+                    <li>Zara Men Shirt</li>
+                    <li>Apple Iphone 7 plus</li>
+                    <li>Induction Cooker</li>
+                    <li>One Indian Girl</li>
+                    <li>HP Laptop</li>
                 </ul>
             </div>
             <div class="footer-bottom-cate">
                 <h6>TOP BRANDS</h6>
                 <ul>
-                    <li><a href="#">Zara</a></li>
-                    <li><a href="#">HP</a></li>
-                    <li><a href="#">Apple</a></li>
-                    <li><a href="#">SS-Cricket</a></li>
-                    <li><a href="#">SleepWell</a></li>
+                    <li>Zara</li>
+                    <li>HP</li>
+                    <li>Apple</li>
+                    <li>SS-Cricket</li>
+                    <li>SleepWell</li>
                 </ul>
             </div>
-            <div class="footer-bottom-cate cate-bottom">
-                <h6>OUR ADDERSS</h6>
+            <div class="footer-bottom-cate cate-bottom" style="font-size: larger">
+                <h5>OUR ADDERSS</h5>
                 <ul>
                     <li>3rd and 4th Floor</li>
                     <li>North wing, JVP Building</li>
@@ -307,7 +334,7 @@
             </div>
             <div class="clearfix"> </div>
         </div>
-		</div>
+    </div>
 	</div>
 </body>
 </html>

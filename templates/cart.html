@@ -21,6 +21,25 @@
 </style>
 
 <style>
+.buttonCheck {
+    background-color: #f97e76; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+    
+.buttonCheck:hover {background-color: #3e8e41}
+
+.buttonCheck4 {border-radius: 12px;}
+</style>
+
+<style>
 .buttonProceed {
   display: inline-block;
   padding: 15px 25px;
@@ -91,7 +110,7 @@
         <div class="container">
             <div class="header-bottom-left">
                 <div class="logo">
-                    <a href="#/"><img src="images/logo.png" alt=" " /></a>
+                    <a href="#/"><img src="./images/alogo.png" alt=" " height="55px" width="173px" /></a>
                 </div>
                       <div class="search">
                     <input type="text" ng-model="searchItem" value="searchItem" >
@@ -119,7 +138,7 @@
                 <div class="grid-chain-bottom">
                     <h6>{{product.title}}</h6>
                     <div class="star-price">
-                        <div class="dolor-grid"> <span class="actual">{{product.original_price}}</span> 
+                        <div class="dolor-grid"> <span class="actual">INR {{product.original_price}}</span> <br>
                             <div class="btn-group" ng-init="product.itemquant = 1">
                          <button type="button" class="btn btn-info" ng-disabled="product.itemquant == 1" ng-click="cartItemCount(product, -1)">-</button>
                         <button type="button" class="btn btn-info" name="quantity" ng-model="quantity">{{product.itemquant}}</button>
@@ -146,7 +165,7 @@
      <div id="contentFree" class="float_r">
      <div ng-show="total">
     <h3 class="Heading">Total: {{ getTotal() }}</h3>
-        <button type="button" class="buttonProceed" ng-click="buyNow(product.original_price)">Checkout</button>
+        <button type="button" class="buttonCheck buttonCheck4" ng-click="buyNow(product.original_price)">Checkout</button>
     </div>
      <div ng-hide="total">
     <h1>Cart is empty!!</h1> 
@@ -167,7 +186,7 @@
                     <ul class="cute collapse" id="electronics">
                         <li class="subitem1"><a href="#/category/electronics/subcategory/mobile">Mobile </a></li>
                         <li class="subitem1"><a href="#/category/electronics/subcategory/laptop">Laptop</a></li>
-                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Printer </a></li>
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Accessories </a></li>
                     </ul>
                 </li>
             </ul>
@@ -196,7 +215,7 @@
                      <img  ng-src="./images/sports/icon.png"><span class="caret"></span>
                     <ul class="cute collapse" id="sports">
                         <li class="subitem1"><a href="#/category/sports/subcategory/cricket">Cricket </a></li>
-                        <li class="subitem1"><a href="#/category/sports/subcategory/badminton">Badminton </a></li>
+                        <li class="subitem1"><a href="#/category/sports/subcategory/accessories">Accessories </a></li>
                         <li class="subitem1"><a href="#/category/sports/subcategory/fitness">Fitness </a></li>
                     </ul>
                 </li>
@@ -219,9 +238,6 @@
                     </ul>
                 </li>
             </ul>
-          
-            
-            
         </div>
         <!--initiate accordion-->
         <script type="text/javascript">
@@ -262,36 +278,36 @@
             <div class="footer-bottom-cate">
                 <h6>CATEGORIES</h6>
                 <ul>
-                    <li><a href="#">Electronics</a></li>
-                    <li><a href="#">Clothing</a></li>
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Home & Furniture</a></li>
-                    <li><a href="#">Appliances</a></li>
+                    <li>Electronics</li>
+                    <li>Clothing</li>
+                    <li>Books</li>
+                    <li>Sports</li>
+                    <li>Home & Furniture</li>
+                    <li>Appliances</li>
                 </ul>
             </div>
             <div class="footer-bottom-cate bottom-grid-cat">
                 <h6>FEATURED PRODUCTS</h6>
                 <ul>
-                    <li><a href="#">Zara Men Shirt</a></li>
-                    <li><a href="#">Apple Iphone 7 plus</a></li>
-                    <li><a href="#">Induction Cooker</a></li>
-                    <li><a href="#">One Indian Girl</a></li>
-                    <li><a href="#">HP Laptop</a></li>
+                    <li>Zara Men Shirt</li>
+                    <li>Apple Iphone 7 plus</li>
+                    <li>Induction Cooker</li>
+                    <li>One Indian Girl</li>
+                    <li>HP Laptop</li>
                 </ul>
             </div>
             <div class="footer-bottom-cate">
                 <h6>TOP BRANDS</h6>
                 <ul>
-                    <li><a href="#">Zara</a></li>
-                    <li><a href="#">HP</a></li>
-                    <li><a href="#">Apple</a></li>
-                    <li><a href="#">SS-Cricket</a></li>
-                    <li><a href="#">SleepWell</a></li>
+                    <li>Zara</li>
+                    <li>HP</li>
+                    <li>Apple</li>
+                    <li>SS-Cricket</li>
+                    <li>SleepWell</li>
                 </ul>
             </div>
-            <div class="footer-bottom-cate cate-bottom">
-                <h6>OUR ADDERSS</h6>
+            <div class="footer-bottom-cate cate-bottom" style="font-size: larger">
+                <h5>OUR ADDERSS</h5>
                 <ul>
                     <li>3rd and 4th Floor</li>
                     <li>North wing, JVP Building</li>

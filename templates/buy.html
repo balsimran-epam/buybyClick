@@ -159,7 +159,7 @@ $(document).ready(function(){
         <div class="container">
             <div class="header-bottom-left">
                 <div class="logo">
-                    <a href="#/"><img src="images/logo.png" alt=" " /></a>
+                    <a href="#/"><img src="./images/alogo.png" alt=" " height="55px" width="173px" /></a>
                 </div>
               
                 <div class="clearfix"> </div>
@@ -188,7 +188,7 @@ $(document).ready(function(){
             <div class="content_half float_l checkout">
                  
 				Full Name:  
-                  <input type="text" ng-pattern="/^[a-zA-Z\s]*$/" style="width:300px;" name="fname" ng-model="fname" required/>
+                  <input type="text" ng-pattern="/^[a-zA-Z\s]*$/" style="width:300px;" autocomplete="off" name="fname" ng-model="fname" required/>
                 <div ng-messages="myform.fname.$error">
 				<div ng-message="required" class="help-block errorcolor"
 					ng-show="myform.fname.$dirty && myform.fname.$error.required">
@@ -199,11 +199,11 @@ $(document).ready(function(){
 			</div>
                 <br>      
               Address:
-				<input type="text"  style="width:300px;"  required/>
+				<input type="text" autocomplete="off"  style="width:300px;"  required/>
                 <br />
                 <br />
               City:
-                <input type="text" ng-pattern="/^[a-zA-Z\s]*$/" name="city" ng-model="city"  style="width:300px;"  required/>
+                <input type="text" ng-pattern="/^[a-zA-Z\s]*$/" name="city" autocomplete="off" ng-model="city"  style="width:300px;"  required/>
                 <div ng-messages="myform.city.$error">
 				<div ng-message="required" class="help-block errorcolor"
 					ng-show="myform.city.$dirty && myform.city.$error.required">
@@ -214,7 +214,7 @@ $(document).ready(function(){
 			</div>
                 <br />
                 Country:
-                <input type="text" ng-pattern="/^[a-zA-Z\s]*$/" name="country" ng-model="country"  style="width:300px;"  required/>
+                <input type="text" ng-pattern="/^[a-zA-Z\s]*$/" autocomplete="off" name="country" ng-model="country"  style="width:300px;"  required/>
                     <div ng-messages="myform.country.$error">
 				<div ng-message="required" class="help-block errorcolor"
 					ng-show="myform.country.$dirty && myform.country.$error.required">
@@ -226,7 +226,7 @@ $(document).ready(function(){
                 <br>
             <div class="content_half float_r checkout">
             	E-MAIL
-				<input type="text" name="email" ng-model="email" style="width:300px;" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required/>
+				<input type="text" name="email" autocomplete="off" ng-model="email" style="width:300px;" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required/>
                 <div ng-messages="myform.email.$error">
                         <div ng-message="required" class="help-block errorcolor"
                             ng-show="myform.email.$dirty && myform.email.$error.required">Not a valid email id.
@@ -237,13 +237,8 @@ $(document).ready(function(){
                     </div>
                 <br />
           PHONE<br />
-                
-                
-                
-                
-                
 				<span style="font-size:10px"></span>
-                <input type="text" ng-pattern=" /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" style="width:300px;"
+                <input type="text" autocomplete="off" ng-pattern=" /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" style="width:300px;"
                     minlength="10" maxlength="10"   name="phone" ng-model="phone" required>
                 <div ng-messages="myform.phone.$error">
                         <div ng-message="required" class="help-block"
@@ -284,7 +279,7 @@ $(document).ready(function(){
                     <td height="80px"> <img src="/images/cod4.jpg" width="120px" height="50px" alt="paypal" /></td>
                     <td width="400px;" style="padding: 0px 20px;">We accept Cash on Delivery. For more information Contact Us!
                     </td>
-                    <td><button type="button"  ng-disabled="myform.$invalid" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1" data-backdrop="static"  >Cash on Delivery</button></td>
+                    <td><button type="button"  ng-disabled="myform.$invalid" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1" data-backdrop="static"  ng-click="removeCart()">Cash on Delivery</button></td>
                                 
 
                 </tr>
@@ -318,7 +313,7 @@ $(document).ready(function(){
                     <ul class="cute collapse" id="electronics">
                         <li class="subitem1"><a href="#/category/electronics/subcategory/mobile">Mobile </a></li>
                         <li class="subitem1"><a href="#/category/electronics/subcategory/laptop">Laptop</a></li>
-                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Printer </a></li>
+                        <li class="subitem1"><a href="#/category/electronics/subcategory/accessories">Accessories </a></li>
                     </ul>
                 </li>
             </ul>
@@ -347,7 +342,7 @@ $(document).ready(function(){
                      <img  ng-src="./images/sports/icon.png"><span class="caret"></span>
                     <ul class="cute collapse" id="sports">
                         <li class="subitem1"><a href="#/category/sports/subcategory/cricket">Cricket </a></li>
-                        <li class="subitem1"><a href="#/category/sports/subcategory/badminton">Badminton </a></li>
+                        <li class="subitem1"><a href="#/category/sports/subcategory/accessories">Accessories </a></li>
                         <li class="subitem1"><a href="#/category/sports/subcategory/fitness">Fitness </a></li>
                     </ul>
                 </li>
@@ -370,9 +365,6 @@ $(document).ready(function(){
                     </ul>
                 </li>
             </ul>
-          
-            
-            
         </div>
         <!--initiate accordion-->
         <script type="text/javascript">
@@ -413,36 +405,36 @@ $(document).ready(function(){
             <div class="footer-bottom-cate">
                 <h6>CATEGORIES</h6>
                 <ul>
-                    <li><a href="#">Electronics</a></li>
-                    <li><a href="#">Clothing</a></li>
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Home & Furniture</a></li>
-                    <li><a href="#">Appliances</a></li>
+                    <li>Electronics</li>
+                    <li>Clothing</li>
+                    <li>Books</li>
+                    <li>Sports</li>
+                    <li>Home & Furniture</li>
+                    <li>Appliances</li>
                 </ul>
             </div>
             <div class="footer-bottom-cate bottom-grid-cat">
                 <h6>FEATURED PRODUCTS</h6>
                 <ul>
-                    <li><a href="#">Zara Men Shirt</a></li>
-                    <li><a href="#">Apple Iphone 7 plus</a></li>
-                    <li><a href="#">Induction Cooker</a></li>
-                    <li><a href="#">One Indian Girl</a></li>
-                    <li><a href="#">HP Laptop</a></li>
+                    <li>Zara Men Shirt</li>
+                    <li>Apple Iphone 7 plus</li>
+                    <li>Induction Cooker</li>
+                    <li>One Indian Girl</li>
+                    <li>HP Laptop</li>
                 </ul>
             </div>
             <div class="footer-bottom-cate">
                 <h6>TOP BRANDS</h6>
                 <ul>
-                    <li><a href="#">Zara</a></li>
-                    <li><a href="#">HP</a></li>
-                    <li><a href="#">Apple</a></li>
-                    <li><a href="#">SS-Cricket</a></li>
-                    <li><a href="#">SleepWell</a></li>
+                    <li>Zara</li>
+                    <li>HP</li>
+                    <li>Apple</li>
+                    <li>SS-Cricket</li>
+                    <li>SleepWell</li>
                 </ul>
             </div>
-            <div class="footer-bottom-cate cate-bottom">
-                <h6>OUR ADDERSS</h6>
+            <div class="footer-bottom-cate cate-bottom" style="font-size: larger">
+                <h5>OUR ADDERSS</h5>
                 <ul>
                     <li>3rd and 4th Floor</li>
                     <li>North wing, JVP Building</li>
